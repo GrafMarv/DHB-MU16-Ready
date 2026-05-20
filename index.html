@@ -9,14 +9,7 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#f2f2f7;color:#1c1c1e;-webkit-tap-highlight-color:transparent}
 .screen{display:none;min-height:100vh}.screen.active{display:block}
 
-.dhb-badge{display:inline-flex;align-items:center;gap:0;border-radius:10px;overflow:hidden;margin-bottom:1.5rem}
-.dhb-stripe{display:flex;flex-direction:column;width:10px;height:52px}
-.dhb-s1{flex:1;background:#E8000D}
-.dhb-s2{flex:1;background:#FFCD00}
-.dhb-s3{flex:1;background:#000}
-.dhb-text{background:#1c1c1e;padding:8px 14px;display:flex;flex-direction:column;justify-content:center}
-.dhb-text span:first-child{font-size:24px;font-weight:900;color:#fff;letter-spacing:1px;line-height:1}
-.dhb-text span:last-child{font-size:9px;font-weight:500;color:#8e8e93;letter-spacing:0.05em;margin-top:2px}
+
 
 .role-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;gap:12px;background:#fff}
 .role-title{font-size:26px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:4px;text-align:center}
@@ -128,11 +121,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <!-- ROLE -->
 <div class="screen active" id="s-role">
   <div class="role-wrap">
-    <div class="dhb-badge">
-      <div class="dhb-stripe"><div class="dhb-s1"></div><div class="dhb-s2"></div><div class="dhb-s3"></div></div>
-      <div class="dhb-text"><span>DHB</span><span>Deutscher Hockey-Bund</span></div>
-    </div>
-    <div class="role-title">U16 Nationalmannschaft</div>
+    <div style="font-size:36px;font-weight:900;letter-spacing:-1px;color:#1c1c1e;margin-bottom:0.5rem">DHB MU16</div>
     <div class="role-sub">Tagescheck-in</div>
     <button class="role-btn role-btn-main" onclick="initCheckin()">Ich bin Spieler</button>
     <button class="role-btn role-btn-sec" onclick="show('s-login')">Trainer-Dashboard</button>
@@ -142,10 +131,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <!-- LOGIN -->
 <div class="screen" id="s-login">
   <div class="login-wrap">
-    <div class="dhb-badge">
-      <div class="dhb-stripe"><div class="dhb-s1"></div><div class="dhb-s2"></div><div class="dhb-s3"></div></div>
-      <div class="dhb-text"><span>DHB</span><span>Trainer-Zugang</span></div>
-    </div>
+    <div style="font-size:36px;font-weight:900;letter-spacing:-1px;color:#1c1c1e;margin-bottom:0.5rem">DHB MU16</div>
     <div style="font-size:20px;font-weight:700;color:#1c1c1e;margin-bottom:4px">Passwort eingeben</div>
     <div style="font-size:14px;color:#8e8e93;margin-bottom:1rem">Nur für Trainer</div>
     <input class="login-input" type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPW()">
@@ -233,16 +219,10 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
   <div class="dash-wrap">
     <div class="dash-header">
       <div>
-        <div style="display:flex;align-items:center;gap:10px">
-          <div class="dhb-badge" style="margin-bottom:0;border-radius:8px">
-            <div class="dhb-stripe" style="height:38px"><div class="dhb-s1"></div><div class="dhb-s2"></div><div class="dhb-s3"></div></div>
-            <div class="dhb-text" style="padding:5px 10px"><span style="font-size:17px">DHB</span><span style="font-size:8px">U16</span></div>
+        <div>
+            <div class="dash-title">DHB MU16</div>
+            <div class="dash-sub">Trainer-Dashboard</div>
           </div>
-          <div>
-            <div class="dash-title">Dashboard</div>
-            <div class="dash-sub">Trainer-Ansicht</div>
-          </div>
-        </div>
       </div>
       <div>
         <div class="dash-date" id="dash-date"></div>
