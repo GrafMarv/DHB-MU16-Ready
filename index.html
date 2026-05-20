@@ -9,9 +9,16 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#f2f2f7;color:#1c1c1e;-webkit-tap-highlight-color:transparent}
 .screen{display:none;min-height:100vh}.screen.active{display:block}
 
-/* ROLE */
+.dhb-badge{display:inline-flex;align-items:center;gap:0;border-radius:10px;overflow:hidden;margin-bottom:1.5rem}
+.dhb-stripe{display:flex;flex-direction:column;width:10px;height:52px}
+.dhb-s1{flex:1;background:#E8000D}
+.dhb-s2{flex:1;background:#FFCD00}
+.dhb-s3{flex:1;background:#000}
+.dhb-text{background:#1c1c1e;padding:8px 14px;display:flex;flex-direction:column;justify-content:center}
+.dhb-text span:first-child{font-size:24px;font-weight:900;color:#fff;letter-spacing:1px;line-height:1}
+.dhb-text span:last-child{font-size:9px;font-weight:500;color:#8e8e93;letter-spacing:0.05em;margin-top:2px}
+
 .role-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;gap:12px;background:#fff}
-.dhb-logo{width:120px;margin-bottom:1.5rem}
 .role-title{font-size:26px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:4px;text-align:center}
 .role-sub{font-size:15px;color:#8e8e93;margin-bottom:2rem;text-align:center}
 .role-btn{width:100%;max-width:340px;padding:16px;border-radius:14px;border:none;font-size:17px;font-weight:600;cursor:pointer;transition:all 0.15s;letter-spacing:-0.2px}
@@ -20,19 +27,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
 .role-btn-sec{background:#f2f2f7;color:#1c1c1e}
 .role-btn-sec:active{background:#e5e5ea}
 
-/* CHECKIN */
 .ci-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
 .page-title{font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:4px}
 .page-sub{font-size:15px;color:#8e8e93;margin-bottom:1.25rem}
 .back-btn{display:flex;align-items:center;gap:3px;background:none;border:none;color:#007aff;font-size:17px;cursor:pointer;padding:0;margin-bottom:1rem}
 .player-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.p-btn{padding:13px 10px;border-radius:13px;border:none;background:#fff;font-size:13px;font-weight:500;cursor:pointer;color:#1c1c1e;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s;letter-spacing:-0.1px}
+.p-btn{padding:13px 10px;border-radius:13px;border:none;background:#fff;font-size:13px;font-weight:500;cursor:pointer;color:#1c1c1e;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s}
 .p-btn:active{background:#f2f2f7;transform:scale(0.97)}
 .p-btn.done{opacity:0.38;cursor:default}
 .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .dot-g{background:#34c759}.dot-a{background:#ff9500}.dot-r{background:#ff3b30}.dot-x{background:#c7c7cc}
 
-/* FORM */
 .form-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
 .player-big{font-size:22px;font-weight:700;letter-spacing:-0.4px;color:#1c1c1e;margin-bottom:1.25rem}
 .card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px}
@@ -60,23 +65,25 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .submit-btn{width:100%;padding:16px;border-radius:14px;border:none;background:#1c1c1e;color:#fff;font-size:17px;font-weight:700;cursor:pointer;margin-top:8px;letter-spacing:-0.2px;transition:all 0.15s}
 .submit-btn:active{background:#3a3a3c;transform:scale(0.98)}
 .submit-btn:disabled{background:#c7c7cc}
-
-/* SUCCESS */
 .success-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#fff;text-align:center}
-
-/* LOADING */
 .loading{text-align:center;padding:3rem;color:#8e8e93;font-size:15px}
 .spinner{display:inline-block;width:24px;height:24px;border:2.5px solid #e5e5ea;border-top-color:#007aff;border-radius:50%;animation:spin 0.7s linear infinite;margin-bottom:12px}
 @keyframes spin{to{transform:rotate(360deg)}}
+
+/* LOGIN */
+.login-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#fff;gap:12px}
+.login-input{width:100%;max-width:340px;padding:15px 16px;border-radius:14px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:17px;color:#1c1c1e;font-family:inherit;letter-spacing:0.1em;text-align:center}
+.login-input:focus{outline:none;border-color:#007aff;background:#fff}
+.login-error{font-size:14px;color:#ff3b30;min-height:20px;text-align:center}
 
 /* DASHBOARD */
 .dash-wrap{max-width:480px;margin:0 auto;background:#f2f2f7;min-height:100vh;padding:0 0 3rem}
 .dash-header{padding:1.25rem 1.25rem 0.5rem;display:flex;align-items:flex-start;justify-content:space-between}
 .dash-title{font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e}
 .dash-sub{font-size:14px;color:#8e8e93;margin-top:2px}
-.dash-date{font-size:12px;color:#8e8e93;text-align:right;line-height:1.5}
+.dash-date{font-size:12px;color:#8e8e93;text-align:right;line-height:1.6}
 .seg{display:flex;background:#e5e5ea;border-radius:11px;padding:2px;margin:0.75rem 1.25rem 0}
-.seg button{flex:1;padding:8px 4px;border:none;border-radius:9px;background:transparent;font-size:13px;font-weight:600;color:#8e8e93;cursor:pointer;transition:all 0.18s;letter-spacing:-0.1px}
+.seg button{flex:1;padding:8px 2px;border:none;border-radius:9px;background:transparent;font-size:12px;font-weight:600;color:#8e8e93;cursor:pointer;transition:all 0.18s}
 .seg button.on{background:#fff;color:#1c1c1e;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
 .view{display:none;padding:0 1.25rem}.view.on{display:block}
 .d-section{font-size:13px;font-weight:700;color:#8e8e93;letter-spacing:0.04em;text-transform:uppercase;margin:1.25rem 0 0.5rem}
@@ -91,11 +98,11 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .prow{display:flex;align-items:center;gap:12px;padding:11px 1.125rem;border-bottom:0.5px solid #f2f2f7;cursor:pointer;background:#fff;transition:background 0.1s}
 .prow:last-child{border-bottom:none}
 .prow:active{background:#f9f9f9}
-.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;letter-spacing:0.02em}
+.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
 .av-g{background:#d1f0c2;color:#2d6a1f}.av-a{background:#fde8b8;color:#7d4e00}.av-r{background:#ffd6d6;color:#c0392b}.av-x{background:#e5e5ea;color:#8e8e93}
 .pname{font-size:15px;font-weight:500;flex:1;color:#1c1c1e;letter-spacing:-0.1px}
 .psub{font-size:12px;color:#8e8e93;margin-top:1px}
-.pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;letter-spacing:0.01em}
+.pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
 .pill-g{background:#d1f0c2;color:#2d6a1f}.pill-a{background:#fde8b8;color:#7d4e00}.pill-r{background:#ffd6d6;color:#c0392b}.pill-x{background:#e5e5ea;color:#8e8e93}
 .chev{color:#c7c7cc;font-size:20px;font-weight:300;flex-shrink:0;margin-left:4px}
 .bar-track{height:4px;background:#f2f2f7;border-radius:2px;flex:1;overflow:hidden;margin:0 8px}
@@ -111,6 +118,9 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .ring-wrap{position:relative;width:130px;height:130px}
 .ring-wrap svg{transform:rotate(-90deg)}
 .ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.add-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:16px;color:#1c1c1e;font-family:inherit;margin-bottom:10px}
+.add-input:focus{outline:none;border-color:#007aff;background:#fff}
+.del-btn{background:none;border:none;color:#ff3b30;font-size:22px;cursor:pointer;padding:4px;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -118,18 +128,30 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <!-- ROLE -->
 <div class="screen active" id="s-role">
   <div class="role-wrap">
-    <svg class="dhb-logo" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="10" width="18" height="100" fill="#1c1c1e"/>
-      <rect x="0" y="10" width="60" height="14" fill="#E8000D"/>
-      <rect x="0" y="48" width="55" height="14" fill="#FFCD00"/>
-      <rect x="0" y="86" width="60" height="14" fill="#1c1c1e"/>
-      <text x="28" y="90" font-family="-apple-system,sans-serif" font-size="52" font-weight="900" fill="#1c1c1e">DHB</text>
-      <text x="28" y="113" font-family="-apple-system,sans-serif" font-size="13" font-weight="500" fill="#8e8e93">Deutscher Hockey-Bund</text>
-    </svg>
+    <div class="dhb-badge">
+      <div class="dhb-stripe"><div class="dhb-s1"></div><div class="dhb-s2"></div><div class="dhb-s3"></div></div>
+      <div class="dhb-text"><span>DHB</span><span>Deutscher Hockey-Bund</span></div>
+    </div>
     <div class="role-title">U16 Nationalmannschaft</div>
     <div class="role-sub">Tagescheck-in</div>
     <button class="role-btn role-btn-main" onclick="initCheckin()">Ich bin Spieler</button>
-    <button class="role-btn role-btn-sec" onclick="initDashboard()">Trainer-Dashboard</button>
+    <button class="role-btn role-btn-sec" onclick="show('s-login')">Trainer-Dashboard</button>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div class="screen" id="s-login">
+  <div class="login-wrap">
+    <div class="dhb-badge">
+      <div class="dhb-stripe"><div class="dhb-s1"></div><div class="dhb-s2"></div><div class="dhb-s3"></div></div>
+      <div class="dhb-text"><span>DHB</span><span>Trainer-Zugang</span></div>
+    </div>
+    <div style="font-size:20px;font-weight:700;color:#1c1c1e;margin-bottom:4px">Passwort eingeben</div>
+    <div style="font-size:14px;color:#8e8e93;margin-bottom:1rem">Nur für Trainer</div>
+    <input class="login-input" type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPW()">
+    <div class="login-error" id="pw-error"></div>
+    <button class="role-btn role-btn-main" style="margin-top:4px" onclick="checkPW()">Einloggen</button>
+    <button class="role-btn role-btn-sec" onclick="show('s-role')">Zurück</button>
   </div>
 </div>
 
@@ -148,7 +170,6 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
   <div class="form-wrap">
     <button class="back-btn" onclick="show('s-checkin')">‹ Zurück</button>
     <div class="player-big" id="form-name"></div>
-
     <div class="card">
       <div class="sec-label">Schlaf</div>
       <div class="q-label">Wie hast du geschlafen?</div>
@@ -213,26 +234,27 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <div class="dash-header">
       <div>
         <div style="display:flex;align-items:center;gap:10px">
-          <svg viewBox="0 0 80 48" width="52" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="2" width="7" height="44" fill="#1c1c1e"/>
-            <rect x="0" y="2" width="24" height="6" fill="#E8000D"/>
-            <rect x="0" y="19" width="22" height="6" fill="#FFCD00"/>
-            <rect x="0" y="36" width="24" height="6" fill="#1c1c1e"/>
-            <text x="11" y="38" font-family="-apple-system,sans-serif" font-size="22" font-weight="900" fill="#1c1c1e">DHB</text>
-          </svg>
+          <div class="dhb-badge" style="margin-bottom:0;border-radius:8px">
+            <div class="dhb-stripe" style="height:38px"><div class="dhb-s1"></div><div class="dhb-s2"></div><div class="dhb-s3"></div></div>
+            <div class="dhb-text" style="padding:5px 10px"><span style="font-size:17px">DHB</span><span style="font-size:8px">U16</span></div>
+          </div>
           <div>
-            <div class="dash-title">U16</div>
-            <div class="dash-sub">Trainer-Dashboard</div>
+            <div class="dash-title">Dashboard</div>
+            <div class="dash-sub">Trainer-Ansicht</div>
           </div>
         </div>
       </div>
-      <div class="dash-date" id="dash-date"></div>
+      <div>
+        <div class="dash-date" id="dash-date"></div>
+        <button onclick="show('s-role')" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;margin-top:4px;display:block;text-align:right">Abmelden</button>
+      </div>
     </div>
 
     <div class="seg">
       <button class="on" onclick="switchTab('today')">Heute</button>
       <button onclick="switchTab('team')">Team</button>
       <button onclick="switchTab('players')">Spieler</button>
+      <button onclick="switchTab('kader')">Kader</button>
     </div>
 
     <!-- HEUTE -->
@@ -245,7 +267,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
           </svg>
           <div class="ring-center">
             <div id="ring-num" style="font-size:30px;font-weight:700;letter-spacing:-1px;color:#1c1c1e">0</div>
-            <div style="font-size:12px;color:#8e8e93;margin-top:1px">von 29</div>
+            <div style="font-size:12px;color:#8e8e93;margin-top:1px" id="ring-total">von 0</div>
           </div>
         </div>
       </div>
@@ -263,7 +285,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
           <span class="leg"><span class="leg-sq" style="background:#34c759"></span>Schlaf</span>
           <span class="leg"><span class="leg-sq" style="background:#007aff"></span>Erholung</span>
         </div>
-        <div style="position:relative;height:190px"><canvas id="chart-line" role="img" aria-label="Schlaf und Erholung Verlauf">Verlauf.</canvas></div>
+        <div style="position:relative;height:190px"><canvas id="chart-line" role="img" aria-label="Verlauf">Verlauf.</canvas></div>
       </div>
       <div class="d-section">Ampelstatus — 7 Tage</div>
       <div class="d-card">
@@ -272,7 +294,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
           <span class="leg"><span class="leg-sq" style="background:#ff9500"></span>Beachten</span>
           <span class="leg"><span class="leg-sq" style="background:#ff3b30"></span>Eingeschränkt</span>
         </div>
-        <div style="position:relative;height:190px"><canvas id="chart-bar" role="img" aria-label="Ampelstatus Verlauf">Verlauf.</canvas></div>
+        <div style="position:relative;height:190px"><canvas id="chart-bar" role="img" aria-label="Ampel">Ampel.</canvas></div>
       </div>
     </div>
 
@@ -287,6 +309,17 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       <button class="back-btn" style="padding:1rem 0 0.5rem" onclick="switchTab('players')">‹ Spieler</button>
       <div id="detail-content"></div>
     </div>
+
+    <!-- KADER -->
+    <div class="view" id="v-kader">
+      <div class="d-section">Spieler hinzufügen</div>
+      <div class="d-card">
+        <input class="add-input" type="text" id="new-player-input" placeholder="Name (z.B. Müller, Thomas)">
+        <button class="submit-btn" onclick="addPlayer()">Spieler hinzufügen</button>
+      </div>
+      <div class="d-section">Kader verwalten</div>
+      <div class="d-card-tight" id="kader-list"></div>
+    </div>
   </div>
 </div>
 
@@ -294,8 +327,17 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <script>
 const SUPABASE_URL='https://upfeswxpeemjkidaamym.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwZmVzd3hwZWVtamtpZGFhbXltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMDY1NjIsImV4cCI6MjA5NDg4MjU2Mn0.ys3BVPw8WZ0kyDcMsPTFTAHLhULWLCOOztIjl1idY64';
-const PLAYERS=["Albrecht, Tristan","Armbrecht, Jonah","Brinkhoff, Elia","Bunzel, Mattis","Britz, Emil","Brunner, Cornelius","Dahm, Fynn-Philip","Hauck, Constantin","Fischbach, Moritz","Fürnthaler, Alexander","Jagd, Henrik","Koppenhöfer, Mika","Katterbath, Mattis","Kosantzky, Max","Mehling, Paul","Polonius, Constantin","Pörksen, Lasse","Richter, Mats","Rödding, Vincent","Schaarschmidt, Henri","Schöder, Noel","Schulz, Conrad","Schymik, Joshua","Sroubek, Moritz","Stybek, Tim","Tietz, Hannes","von Bernstoff, Leonhard","von Schwarze, Carl","Zeunem, Louis"];
+const TRAINER_PW='grafmarv';
+const DEFAULT_PLAYERS=["Albrecht, Tristan","Armbrecht, Jonah","Brinkhoff, Elia","Bunzel, Mattis","Britz, Emil","Brunner, Cornelius","Dahm, Fynn-Philip","Hauck, Constantin","Fischbach, Moritz","Fürnthaler, Alexander","Jagd, Henrik","Koppenhöfer, Mika","Katterbath, Mattis","Kosantzky, Max","Mehling, Paul","Polonius, Constantin","Pörksen, Lasse","Richter, Mats","Rödding, Vincent","Schaarschmidt, Henri","Schöder, Noel","Schulz, Conrad","Schymik, Joshua","Sroubek, Moritz","Stybek, Tim","Tietz, Hannes","von Bernstoff, Leonhard","von Schwarze, Carl","Zeunem, Louis"];
+
+let PLAYERS=[];
 let currentPlayer=null,formState={},todayData={},historyData=[],lineChart=null,barChart=null;
+
+function loadPlayers(){
+  try{const s=localStorage.getItem('dhb_players');if(s)PLAYERS=JSON.parse(s);else{PLAYERS=[...DEFAULT_PLAYERS];savePlayers();}}catch(e){PLAYERS=[...DEFAULT_PLAYERS];}
+}
+function savePlayers(){try{localStorage.setItem('dhb_players',JSON.stringify(PLAYERS));}catch(e){}}
+
 function getToday(){return new Date().toISOString().slice(0,10);}
 function getDates(n){const d=[];for(let i=n-1;i>=0;i--){const dt=new Date();dt.setDate(dt.getDate()-i);d.push(dt.toISOString().slice(0,10));}return d;}
 function initials(n){const p=n.split(',');return(p[1]?.trim()[0]||'')+(p[0]?.[0]||'');}
@@ -307,15 +349,21 @@ const barCol={g:'#34c759',a:'#ff9500',r:'#ff3b30'};
 
 async function api(path,method='GET',body=null){
   const opts={method,headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'}};
-  if(body) opts.body=JSON.stringify(body);
+  if(body)opts.body=JSON.stringify(body);
   const r=await fetch(SUPABASE_URL+'/rest/v1/'+path,opts);
-  if(method==='GET') return r.json();
+  if(method==='GET')return r.json();
   return r;
 }
 async function loadToday(){const rows=await api('checkins?datum=eq.'+getToday()+'&select=*');todayData={};rows.forEach(r=>todayData[r.spieler]=r);}
 async function loadHistory(){const dates=getDates(7);historyData=await api('checkins?datum=gte.'+dates[0]+'&select=*&order=datum.asc');}
 
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+
+function checkPW(){
+  const val=document.getElementById('pw-input').value;
+  if(val===TRAINER_PW){document.getElementById('pw-error').textContent='';document.getElementById('pw-input').value='';initDashboard();}
+  else{document.getElementById('pw-error').textContent='Falsches Passwort';}
+}
 
 async function initCheckin(){
   show('s-checkin');
@@ -334,16 +382,14 @@ function renderPlayerGrid(){
 }
 
 function selectPlayer(name){
-  currentPlayer=name;
-  formState={schlaf:0,erholung:0,schmerz:null,krank:null,ready:null};
+  currentPlayer=name;formState={schlaf:0,erholung:0,schmerz:null,krank:null,ready:null};
   document.getElementById('form-name').textContent=name;
   buildStars('q-schlaf','schlaf');buildStars('q-erholung','erholung');
   ['schmerz','krank'].forEach(k=>{
     document.getElementById('q-'+k+'-row').querySelectorAll('.yn-btn').forEach(b=>b.className='yn-btn');
     document.getElementById('q-'+k+'-text').style.display='none';
   });
-  document.getElementById('ta-schmerz').value='';
-  document.getElementById('ta-krank').value='';
+  document.getElementById('ta-schmerz').value='';document.getElementById('ta-krank').value='';
   document.getElementById('q-ready-row').querySelectorAll('.ready-btn').forEach(b=>b.className='ready-btn');
   const btn=document.getElementById('submit-btn');btn.disabled=false;btn.textContent='Check-in abschicken';
   show('s-form');
@@ -394,9 +440,10 @@ function renderToday(){
   const rote=subs.filter(s=>getStatus(s)==='r').length;
   const avgS=done?(subs.reduce((a,b)=>a+b.schlaf,0)/done).toFixed(1):'—';
   const avgE=done?(subs.reduce((a,b)=>a+b.erholung,0)/done).toFixed(1):'—';
-  const pct=Math.round(done/total*100);
+  const pct=total>0?Math.round(done/total*100):0;
   const circ=351.9;
   document.getElementById('ring-num').textContent=done;
+  document.getElementById('ring-total').textContent='von '+total;
   document.getElementById('ring-prog').style.strokeDashoffset=circ-(circ*pct/100);
   document.getElementById('ring-prog').style.stroke=rote>0?'#ff9500':'#34c759';
   document.getElementById('today-metrics').innerHTML=`
@@ -441,10 +488,11 @@ function switchTab(t){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
   document.getElementById('v-'+t).classList.add('on');
-  const idx={today:0,team:1,players:2};
-  if(idx[t]!==undefined) document.querySelectorAll('.seg button')[idx[t]]?.classList.add('on');
-  if(t==='team') renderCharts();
-  if(t==='players') renderPlayers();
+  const idx={today:0,team:1,players:2,kader:3};
+  if(idx[t]!==undefined)document.querySelectorAll('.seg button')[idx[t]]?.classList.add('on');
+  if(t==='team')renderCharts();
+  if(t==='players')renderPlayers();
+  if(t==='kader')renderKader();
 }
 
 function renderCharts(){
@@ -456,8 +504,7 @@ function renderCharts(){
   const gruen=dates.map(d=>(byDate[d]||[]).filter(s=>getStatus(s)==='g').length);
   const gelb=dates.map(d=>(byDate[d]||[]).filter(s=>getStatus(s)==='a').length);
   const rot=dates.map(d=>(byDate[d]||[]).filter(s=>getStatus(s)==='r').length);
-  const tf={size:11,family:'-apple-system,BlinkMacSystemFont,sans-serif'};
-  const gc='rgba(0,0,0,0.06)';
+  const tf={size:11,family:'-apple-system,BlinkMacSystemFont,sans-serif'};const gc='rgba(0,0,0,0.06)';
   if(lineChart)lineChart.destroy();
   lineChart=new Chart(document.getElementById('chart-line'),{type:'line',data:{labels,datasets:[
     {label:'Schlaf',data:avgS,borderColor:'#34c759',backgroundColor:'rgba(52,199,89,0.08)',tension:0.4,pointRadius:3,pointBackgroundColor:'#34c759',fill:true,borderWidth:2},
@@ -485,6 +532,36 @@ function renderPlayers(){
       <span class="chev">›</span>
     </div>`;
   }).join('');
+}
+
+function renderKader(){
+  document.getElementById('kader-list').innerHTML=PLAYERS.map((p,i)=>
+    `<div class="prow" style="cursor:default">
+      <div class="av av-x">${initials(p)}</div>
+      <div class="pname" style="flex:1">${p}</div>
+      <button class="del-btn" onclick="removePlayer(${i})" title="Entfernen">×</button>
+    </div>`
+  ).join('');
+}
+
+function addPlayer(){
+  const input=document.getElementById('new-player-input');
+  const name=input.value.trim();
+  if(!name){alert('Bitte einen Namen eingeben.');return;}
+  if(PLAYERS.includes(name)){alert('Spieler bereits im Kader.');return;}
+  PLAYERS.push(name);
+  PLAYERS.sort();
+  savePlayers();
+  input.value='';
+  renderKader();
+}
+
+function removePlayer(idx){
+  const name=PLAYERS[idx];
+  if(!confirm('Spieler "'+name+'" aus dem Kader entfernen?'))return;
+  PLAYERS.splice(idx,1);
+  savePlayers();
+  renderKader();
 }
 
 function showDetail(name){
@@ -528,6 +605,8 @@ function showDetail(name){
   document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
   document.getElementById('v-detail').classList.add('on');
 }
+
+loadPlayers();
 </script>
 </body>
 </html>
