@@ -3,23 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>DHB U16 – Check-in</title>
+<title>DHB MU16 – Check-in</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#f2f2f7;color:#1c1c1e;-webkit-tap-highlight-color:transparent}
 .screen{display:none;min-height:100vh}.screen.active{display:block}
-
-
-
 .role-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;gap:12px;background:#fff}
-.role-title{font-size:26px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:4px;text-align:center}
 .role-sub{font-size:15px;color:#8e8e93;margin-bottom:2rem;text-align:center}
 .role-btn{width:100%;max-width:340px;padding:16px;border-radius:14px;border:none;font-size:17px;font-weight:600;cursor:pointer;transition:all 0.15s;letter-spacing:-0.2px}
-.role-btn-main{background:#1c1c1e;color:#fff}
-.role-btn-main:active{background:#3a3a3c}
-.role-btn-sec{background:#f2f2f7;color:#1c1c1e}
-.role-btn-sec:active{background:#e5e5ea}
-
+.role-btn-main{background:#1c1c1e;color:#fff}.role-btn-main:active{background:#3a3a3c}
+.role-btn-sec{background:#f2f2f7;color:#1c1c1e}.role-btn-sec:active{background:#e5e5ea}
 .ci-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
 .page-title{font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:4px}
 .page-sub{font-size:15px;color:#8e8e93;margin-bottom:1.25rem}
@@ -30,7 +23,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
 .p-btn.done{opacity:0.38;cursor:default}
 .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .dot-g{background:#34c759}.dot-a{background:#ff9500}.dot-r{background:#ff3b30}.dot-x{background:#c7c7cc}
-
 .form-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
 .player-big{font-size:22px;font-weight:700;letter-spacing:-0.4px;color:#1c1c1e;margin-bottom:1.25rem}
 .card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px}
@@ -62,24 +54,21 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .loading{text-align:center;padding:3rem;color:#8e8e93;font-size:15px}
 .spinner{display:inline-block;width:24px;height:24px;border:2.5px solid #e5e5ea;border-top-color:#007aff;border-radius:50%;animation:spin 0.7s linear infinite;margin-bottom:12px}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* LOGIN */
 .login-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#fff;gap:12px}
 .login-input{width:100%;max-width:340px;padding:15px 16px;border-radius:14px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:17px;color:#1c1c1e;font-family:inherit;letter-spacing:0.1em;text-align:center}
 .login-input:focus{outline:none;border-color:#007aff;background:#fff}
 .login-error{font-size:14px;color:#ff3b30;min-height:20px;text-align:center}
-
-/* DASHBOARD */
 .dash-wrap{max-width:480px;margin:0 auto;background:#f2f2f7;min-height:100vh;padding:0 0 3rem}
 .dash-header{padding:1.25rem 1.25rem 0.5rem;display:flex;align-items:flex-start;justify-content:space-between}
 .dash-title{font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e}
 .dash-sub{font-size:14px;color:#8e8e93;margin-top:2px}
 .dash-date{font-size:12px;color:#8e8e93;text-align:right;line-height:1.6}
 .seg{display:flex;background:#e5e5ea;border-radius:11px;padding:2px;margin:0.75rem 1.25rem 0}
-.seg button{flex:1;padding:8px 2px;border:none;border-radius:9px;background:transparent;font-size:12px;font-weight:600;color:#8e8e93;cursor:pointer;transition:all 0.18s}
+.seg button{flex:1;padding:8px 2px;border:none;border-radius:9px;background:transparent;font-size:11px;font-weight:600;color:#8e8e93;cursor:pointer;transition:all 0.18s}
 .seg button.on{background:#fff;color:#1c1c1e;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
 .view{display:none;padding:0 1.25rem}.view.on{display:block}
-.d-section{font-size:13px;font-weight:700;color:#8e8e93;letter-spacing:0.04em;text-transform:uppercase;margin:1.25rem 0 0.5rem}
+.d-section{font-size:13px;font-weight:700;color:#8e8e93;letter-spacing:0.04em;text-transform:uppercase;margin:1.25rem 0 0.5rem;display:flex;align-items:center;justify-content:space-between}
+.d-section-btn{background:none;border:none;color:#007aff;font-size:13px;font-weight:600;cursor:pointer;text-transform:none;letter-spacing:0}
 .d-card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px}
 .d-card-tight{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:10px}
 .m4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px}
@@ -107,13 +96,19 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .dr{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid #f2f2f7}
 .dr:last-child{border-bottom:none}
 .dl{font-size:14px;color:#8e8e93}
-.dv{font-size:14px;font-weight:500;color:#1c1c1e;text-align:right}
+.dv{font-size:14px;font-weight:500;color:#1c1c1e;text-align:right;max-width:60%}
 .ring-wrap{position:relative;width:130px;height:130px}
 .ring-wrap svg{transform:rotate(-90deg)}
 .ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
 .add-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:16px;color:#1c1c1e;font-family:inherit;margin-bottom:10px}
 .add-input:focus{outline:none;border-color:#007aff;background:#fff}
 .del-btn{background:none;border:none;color:#ff3b30;font-size:22px;cursor:pointer;padding:4px;flex-shrink:0}
+.red-btn{width:100%;padding:14px;border-radius:14px;border:1.5px solid #ffd6d6;background:#fff0f0;color:#ff3b30;font-size:15px;font-weight:600;cursor:pointer;margin-top:10px;transition:all 0.15s}
+.red-btn:active{background:#ffd6d6}
+.note-area{width:100%;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;color:#1c1c1e;padding:10px 12px;font-size:14px;resize:none;font-family:inherit;line-height:1.5;margin-top:6px}
+.note-area:focus{outline:none;border-color:#007aff;background:#fff}
+.deadline-banner{background:#fde8b8;border-radius:12px;padding:10px 14px;margin-bottom:10px;font-size:13px;color:#7d4e00;font-weight:500;text-align:center}
+.closed-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:2rem}
 </style>
 </head>
 <body>
@@ -147,6 +142,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <button class="back-btn" onclick="show('s-role')">‹ Zurück</button>
     <div class="page-title">Wer bist du?</div>
     <div class="page-sub">Tippe deinen Namen an</div>
+    <div id="deadline-banner"></div>
     <div class="player-grid" id="player-grid"></div>
   </div>
 </div>
@@ -219,14 +215,15 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
   <div class="dash-wrap">
     <div class="dash-header">
       <div>
-        <div>
-            <div class="dash-title">DHB MU16</div>
-            <div class="dash-sub">Trainer-Dashboard</div>
-          </div>
+        <div class="dash-title">DHB MU16</div>
+        <div class="dash-sub">Trainer-Dashboard</div>
       </div>
-      <div>
+      <div style="text-align:right">
         <div class="dash-date" id="dash-date"></div>
-        <button onclick="show('s-role')" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;margin-top:4px;display:block;text-align:right">Abmelden</button>
+        <div style="display:flex;gap:8px;margin-top:6px;justify-content:flex-end">
+          <button onclick="refreshDashboard()" style="background:none;border:none;color:#007aff;font-size:12px;cursor:pointer">↻ Aktualisieren</button>
+          <button onclick="show('s-role')" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer">Abmelden</button>
+        </div>
       </div>
     </div>
 
@@ -235,6 +232,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       <button onclick="switchTab('team')">Team</button>
       <button onclick="switchTab('players')">Spieler</button>
       <button onclick="switchTab('kader')">Kader</button>
+      <button onclick="switchTab('einst')">Einst.</button>
     </div>
 
     <!-- HEUTE -->
@@ -253,8 +251,14 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       </div>
       <div class="m4" id="today-metrics"></div>
       <div id="today-alerts"></div>
-      <div class="d-section">Mannschaft</div>
+      <div class="d-section">
+        Mannschaft
+        <button class="d-section-btn" onclick="exportCSV()">⬇ CSV Export</button>
+      </div>
       <div class="d-card-tight" id="today-list"></div>
+      <div style="margin-top:12px">
+        <button class="red-btn" onclick="resetAll()" style="margin-top:0">Alle Check-ins heute zurücksetzen</button>
+      </div>
     </div>
 
     <!-- TEAM -->
@@ -300,6 +304,27 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       <div class="d-section">Kader verwalten</div>
       <div class="d-card-tight" id="kader-list"></div>
     </div>
+
+    <!-- EINSTELLUNGEN -->
+    <div class="view" id="v-einst">
+      <div class="d-section">Check-in Frist</div>
+      <div class="d-card">
+        <div style="font-size:14px;color:#8e8e93;margin-bottom:12px">Bis wann können Spieler heute einchecken?</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <input type="time" id="deadline-input" value="10:00" style="padding:10px 14px;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:16px;color:#1c1c1e;font-family:inherit;flex:1">
+          <button onclick="saveDeadline()" style="padding:10px 18px;border-radius:12px;border:none;background:#1c1c1e;color:#fff;font-size:14px;font-weight:600;cursor:pointer">Speichern</button>
+        </div>
+        <div style="font-size:12px;color:#8e8e93;margin-top:8px">Leer lassen = kein Zeitlimit</div>
+        <div id="deadline-saved" style="font-size:13px;color:#34c759;margin-top:6px;min-height:18px"></div>
+      </div>
+      <div class="d-section">Passwort ändern</div>
+      <div class="d-card">
+        <input class="add-input" type="password" id="new-pw-input" placeholder="Neues Passwort" style="margin-bottom:8px">
+        <input class="add-input" type="password" id="new-pw-confirm" placeholder="Passwort bestätigen">
+        <button class="submit-btn" onclick="changePW()">Passwort ändern</button>
+        <div id="pw-change-msg" style="font-size:13px;margin-top:8px;min-height:18px;text-align:center"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -307,14 +332,18 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <script>
 const SUPABASE_URL='https://upfeswxpeemjkidaamym.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwZmVzd3hwZWVtamtpZGFhbXltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMDY1NjIsImV4cCI6MjA5NDg4MjU2Mn0.ys3BVPw8WZ0kyDcMsPTFTAHLhULWLCOOztIjl1idY64';
-const TRAINER_PW='grafmarv';
 const DEFAULT_PLAYERS=["Albrecht, Tristan","Armbrecht, Jonah","Brinkhoff, Elia","Bunzel, Mattis","Britz, Emil","Brunner, Cornelius","Dahm, Fynn-Philip","Hauck, Constantin","Fischbach, Moritz","Fürnthaler, Alexander","Jagd, Henrik","Koppenhöfer, Mika","Katterbath, Mattis","Kosantzky, Max","Mehling, Paul","Polonius, Constantin","Pörksen, Lasse","Richter, Mats","Rödding, Vincent","Schaarschmidt, Henri","Schöder, Noel","Schulz, Conrad","Schymik, Joshua","Sroubek, Moritz","Stybek, Tim","Tietz, Hannes","von Bernstoff, Leonhard","von Schwarze, Carl","Zeunem, Louis"];
 
-let PLAYERS=[];
+let PLAYERS=[],TRAINER_PW='grafmarv';
 let currentPlayer=null,formState={},todayData={},historyData=[],lineChart=null,barChart=null;
+let DEADLINE='10:00';
 
-function loadPlayers(){
-  try{const s=localStorage.getItem('dhb_players');if(s)PLAYERS=JSON.parse(s);else{PLAYERS=[...DEFAULT_PLAYERS];savePlayers();}}catch(e){PLAYERS=[...DEFAULT_PLAYERS];}
+function loadSettings(){
+  try{
+    const p=localStorage.getItem('dhb_pw');if(p)TRAINER_PW=p;
+    const d=localStorage.getItem('dhb_deadline');if(d!==null)DEADLINE=d;
+    const s=localStorage.getItem('dhb_players');if(s)PLAYERS=JSON.parse(s);else{PLAYERS=[...DEFAULT_PLAYERS];savePlayers();}
+  }catch(e){PLAYERS=[...DEFAULT_PLAYERS];}
 }
 function savePlayers(){try{localStorage.setItem('dhb_players',JSON.stringify(PLAYERS));}catch(e){}}
 
@@ -326,6 +355,13 @@ const avCls={g:'av av-g',a:'av av-a',r:'av av-r',x:'av av-x'};
 const pillCls={g:'pill pill-g',a:'pill pill-a',r:'pill pill-r',x:'pill pill-x'};
 const pillTxt={g:'Fit',a:'Beachten',r:'Eingeschränkt',x:'Ausstehend'};
 const barCol={g:'#34c759',a:'#ff9500',r:'#ff3b30'};
+
+function isDeadlinePassed(){
+  if(!DEADLINE)return false;
+  const now=new Date();
+  const[h,m]=DEADLINE.split(':').map(Number);
+  return now.getHours()>h||(now.getHours()===h&&now.getMinutes()>=m);
+}
 
 async function api(path,method='GET',body=null){
   const opts={method,headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'}};
@@ -348,7 +384,22 @@ function checkPW(){
 async function initCheckin(){
   show('s-checkin');
   document.getElementById('player-grid').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
-  await loadToday();renderPlayerGrid();
+  await loadToday();
+  const banner=document.getElementById('deadline-banner');
+  if(DEADLINE){
+    if(isDeadlinePassed()){
+      banner.innerHTML='';
+      document.getElementById('player-grid').innerHTML=`<div class="closed-screen" style="grid-column:1/-1">
+        <div style="font-size:48px;margin-bottom:1rem">🔒</div>
+        <div style="font-size:18px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Check-in geschlossen</div>
+        <div style="font-size:14px;color:#8e8e93">Die Frist (${DEADLINE} Uhr) ist abgelaufen.</div>
+      </div>`;
+      return;
+    } else {
+      banner.innerHTML=`<div class="deadline-banner">Check-in möglich bis ${DEADLINE} Uhr</div>`;
+    }
+  } else { banner.innerHTML=''; }
+  renderPlayerGrid();
 }
 
 function renderPlayerGrid(){
@@ -408,8 +459,18 @@ async function submitForm(){
 async function initDashboard(){
   show('s-dashboard');
   document.getElementById('today-list').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
+  document.getElementById('deadline-input').value=DEADLINE||'';
   await Promise.all([loadToday(),loadHistory()]);
   renderToday();
+}
+
+async function refreshDashboard(){
+  document.getElementById('today-list').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
+  await Promise.all([loadToday(),loadHistory()]);
+  renderToday();
+  const cur=document.querySelector('.view.on');
+  if(cur&&cur.id==='v-team')renderCharts();
+  if(cur&&cur.id==='v-players')renderPlayers();
 }
 
 function renderToday(){
@@ -468,7 +529,7 @@ function switchTab(t){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
   document.getElementById('v-'+t).classList.add('on');
-  const idx={today:0,team:1,players:2,kader:3};
+  const idx={today:0,team:1,players:2,kader:3,einst:4};
   if(idx[t]!==undefined)document.querySelectorAll('.seg button')[idx[t]]?.classList.add('on');
   if(t==='team')renderCharts();
   if(t==='players')renderPlayers();
@@ -519,7 +580,7 @@ function renderKader(){
     `<div class="prow" style="cursor:default">
       <div class="av av-x">${initials(p)}</div>
       <div class="pname" style="flex:1">${p}</div>
-      <button class="del-btn" onclick="removePlayer(${i})" title="Entfernen">×</button>
+      <button class="del-btn" onclick="removePlayer(${i})">×</button>
     </div>`
   ).join('');
 }
@@ -529,19 +590,62 @@ function addPlayer(){
   const name=input.value.trim();
   if(!name){alert('Bitte einen Namen eingeben.');return;}
   if(PLAYERS.includes(name)){alert('Spieler bereits im Kader.');return;}
-  PLAYERS.push(name);
-  PLAYERS.sort();
-  savePlayers();
-  input.value='';
-  renderKader();
+  PLAYERS.push(name);PLAYERS.sort();savePlayers();input.value='';renderKader();
 }
 
 function removePlayer(idx){
   const name=PLAYERS[idx];
-  if(!confirm('Spieler "'+name+'" aus dem Kader entfernen?'))return;
-  PLAYERS.splice(idx,1);
-  savePlayers();
-  renderKader();
+  if(!confirm('Spieler "'+name+'" entfernen?'))return;
+  PLAYERS.splice(idx,1);savePlayers();renderKader();
+}
+
+function saveDeadline(){
+  DEADLINE=document.getElementById('deadline-input').value;
+  localStorage.setItem('dhb_deadline',DEADLINE);
+  const msg=document.getElementById('deadline-saved');
+  msg.textContent=DEADLINE?'Gespeichert — Frist: '+DEADLINE+' Uhr':'Gespeichert — kein Zeitlimit';
+  setTimeout(()=>msg.textContent='',3000);
+}
+
+function changePW(){
+  const a=document.getElementById('new-pw-input').value;
+  const b=document.getElementById('new-pw-confirm').value;
+  const msg=document.getElementById('pw-change-msg');
+  if(!a){msg.style.color='#ff3b30';msg.textContent='Bitte Passwort eingeben.';return;}
+  if(a!==b){msg.style.color='#ff3b30';msg.textContent='Passwörter stimmen nicht überein.';return;}
+  TRAINER_PW=a;localStorage.setItem('dhb_pw',a);
+  document.getElementById('new-pw-input').value='';
+  document.getElementById('new-pw-confirm').value='';
+  msg.style.color='#34c759';msg.textContent='Passwort geändert!';
+  setTimeout(()=>msg.textContent='',3000);
+}
+
+async function resetCheckin(name){
+  if(!confirm('Check-in von "'+name+'" zurücksetzen?'))return;
+  const rows=await api('checkins?datum=eq.'+getToday()+'&spieler=eq.'+encodeURIComponent(name)+'&select=id');
+  if(rows.length){await api('checkins?id=eq.'+rows[0].id,'DELETE');delete todayData[name];renderToday();switchTab('players');}
+}
+
+async function resetAll(){
+  if(!confirm('Alle '+Object.keys(todayData).length+' Check-ins von heute zurücksetzen?'))return;
+  const rows=await api('checkins?datum=eq.'+getToday()+'&select=id');
+  await Promise.all(rows.map(r=>api('checkins?id=eq.'+r.id,'DELETE')));
+  todayData={};renderToday();
+}
+
+function exportCSV(){
+  const rows=[['Name','Schlaf','Erholung','Schmerzen','Schmerzinfo','Krank','Krankinfo','Einsatzfähig','Uhrzeit','Status']];
+  PLAYERS.forEach(p=>{
+    const s=todayData[p];
+    if(s){
+      rows.push([p,s.schlaf,s.erholung,s.schmerz,s.schmerz_text||'',s.krank,s.krank_text||'',s.ready,s.uhrzeit,pillTxt[getStatus(s)]]);
+    }
+  });
+  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download='DHB-MU16-'+getToday()+'.csv';
+  a.click();
 }
 
 function showDetail(name){
@@ -549,6 +653,7 @@ function showDetail(name){
   const em=['😴','😕','😐','🙂','😄'];
   const readyMap={ja:'Ja, voll dabei',teilweise:'Teilweise eingeschränkt',nein:'Nicht fit'};
   const ph=historyData.filter(r=>r.spieler===name);
+  const note=localStorage.getItem('dhb_note_'+name)||'';
   const histHtml=ph.length?ph.map(d=>{
     const avg=((d.schlaf+d.erholung)/2).toFixed(1);
     const label=new Date(d.datum+'T12:00:00').toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'short'});
@@ -580,26 +685,28 @@ function showDetail(name){
     </div>`:'<div class="d-card" style="color:#8e8e93;font-size:14px;text-align:center;padding:1.5rem">Heute noch nicht eingecheckt</div>'}
     <div class="d-section">Verlauf — 7 Tage</div>
     <div class="d-card">${histHtml}</div>
-    ${s?`<button onclick="resetCheckin('${name}')" style="width:100%;padding:14px;border-radius:14px;border:1.5px solid #ffd6d6;background:#fff0f0;color:#ff3b30;font-size:15px;font-weight:600;cursor:pointer;margin-top:10px">Check-in zurücksetzen</button>`:''}`;
+    <div class="d-section">Trainer-Notiz</div>
+    <div class="d-card">
+      <textarea class="note-area" rows="3" id="note-${name}" placeholder="Persönliche Notiz zu diesem Spieler…">${note}</textarea>
+      <button onclick="saveNote('${name}')" style="margin-top:8px;padding:10px 18px;border-radius:10px;border:none;background:#1c1c1e;color:#fff;font-size:14px;font-weight:600;cursor:pointer">Notiz speichern</button>
+    </div>
+    ${s?`<button onclick="resetCheckin('${name}')" class="red-btn">Check-in zurücksetzen</button>`:''}`;
 
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
   document.getElementById('v-detail').classList.add('on');
 }
 
-
-async function resetCheckin(name){
-  if(!confirm('Check-in von "'+name+'" für heute zurücksetzen?'))return;
-  const rows=await api('checkins?datum=eq.'+getToday()+'&spieler=eq.'+encodeURIComponent(name)+'&select=id');
-  if(rows.length){
-    await api('checkins?id=eq.'+rows[0].id,'DELETE');
-    delete todayData[name];
-    renderToday();
-    switchTab('players');
-  }
+function saveNote(name){
+  const val=document.getElementById('note-'+name)?.value||'';
+  localStorage.setItem('dhb_note_'+name,val);
+  const btn=event.target;btn.textContent='Gespeichert ✓';btn.style.background='#34c759';
+  setTimeout(()=>{btn.textContent='Notiz speichern';btn.style.background='#1c1c1e';},2000);
 }
 
-loadPlayers();
+loadSettings();
 </script>
 </body>
 </html>
+ENDOFFILE
+echo "Done"
