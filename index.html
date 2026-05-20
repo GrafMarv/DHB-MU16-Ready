@@ -579,11 +579,24 @@ function showDetail(name){
       <div class="dr"><span class="dl">Einsatzfähig</span><span class="dv">${readyMap[s.ready]||s.ready}</span></div>
     </div>`:'<div class="d-card" style="color:#8e8e93;font-size:14px;text-align:center;padding:1.5rem">Heute noch nicht eingecheckt</div>'}
     <div class="d-section">Verlauf — 7 Tage</div>
-    <div class="d-card">${histHtml}</div>`;
+    <div class="d-card">${histHtml}</div>
+    ${s?`<button onclick="resetCheckin('${name}')" style="width:100%;padding:14px;border-radius:14px;border:1.5px solid #ffd6d6;background:#fff0f0;color:#ff3b30;font-size:15px;font-weight:600;cursor:pointer;margin-top:10px">Check-in zurücksetzen</button>`:''}`;
 
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
   document.getElementById('v-detail').classList.add('on');
+}
+
+
+async function resetCheckin(name){
+  if(!confirm('Check-in von "'+name+'" für heute zurücksetzen?'))return;
+  const rows=await api('checkins?datum=eq.'+getToday()+'&spieler=eq.'+encodeURIComponent(name)+'&select=id');
+  if(rows.length){
+    await api('checkins?id=eq.'+rows[0].id,'DELETE');
+    delete todayData[name];
+    renderToday();
+    switchTab('players');
+  }
 }
 
 loadPlayers();
