@@ -6,108 +6,118 @@
 <title>DHB MU16</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#f2f2f7;color:#1c1c1e;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#f0eff4;color:#1c1c1e;-webkit-tap-highlight-color:transparent}
 .screen{display:none;min-height:100vh}.screen.active{display:block}
-.role-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;gap:12px;background:#fff}
-.role-sub{font-size:15px;color:#8e8e93;margin-bottom:2rem;text-align:center}
-.role-btn{width:100%;max-width:340px;padding:16px;border-radius:14px;border:none;font-size:17px;font-weight:600;cursor:pointer;transition:all 0.15s}
+
+.role-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:3rem 1.25rem 2rem;text-align:center;gap:10px;background:#f0eff4}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:0.22em;color:#aeaeb2;text-transform:uppercase;margin-bottom:1rem}
+.big-title{font-size:56px;font-weight:800;letter-spacing:-3px;color:#1c1c1e;line-height:0.9}
+.big-sub{font-size:56px;font-weight:200;letter-spacing:-2px;color:#c7c7cc;line-height:0.9;margin-bottom:2rem}
+.btn-stack{width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px}
+.role-btn{width:100%;padding:16px;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer;letter-spacing:-0.2px;border:none;transition:all 0.15s}
 .role-btn-main{background:#1c1c1e;color:#fff}.role-btn-main:active{background:#3a3a3c}
-.role-btn-sec{background:#f2f2f7;color:#1c1c1e}.role-btn-sec:active{background:#e5e5ea}
-.ci-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
-.form-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
-.page-title{font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:4px}
-.page-sub{font-size:15px;color:#8e8e93;margin-bottom:1.25rem}
-.back-btn{display:flex;align-items:center;gap:3px;background:none;border:none;color:#007aff;font-size:17px;cursor:pointer;padding:0;margin-bottom:1rem}
+.role-btn-sec{background:#fff;color:#1c1c1e;border:1px solid #d1d1d6 !important}.role-btn-sec:active{background:#f2f2f7}
+.role-btn-blue{background:#007aff;color:#fff}.role-btn-blue:active{background:#0066d6}
+.role-btn-ghost{background:#fff;color:#aeaeb2;border:1px solid #e5e5ea !important}.role-btn-ghost:active{background:#f2f2f7}
+
+.ci-wrap{max-width:480px;margin:0 auto;padding:1.25rem;background:#f0eff4;min-height:100vh}
+.form-wrap{max-width:480px;margin:0 auto;padding:1.25rem;background:#f0eff4;min-height:100vh}
+.page-title{font-size:28px;font-weight:700;letter-spacing:-1px;color:#1c1c1e;margin-bottom:4px}
+.page-sub{font-size:14px;color:#aeaeb2;margin-bottom:1.25rem}
+.back-btn{display:flex;align-items:center;gap:3px;background:none;border:none;color:#007aff;font-size:16px;cursor:pointer;padding:0;margin-bottom:1.25rem}
 .player-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.p-btn{padding:13px 10px;border-radius:13px;border:none;background:#fff;font-size:13px;font-weight:500;cursor:pointer;color:#1c1c1e;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s;width:100%}
+.p-btn{padding:13px 12px;border-radius:14px;border:1px solid rgba(0,0,0,0.06);background:#fff;font-size:13px;font-weight:500;cursor:pointer;color:#1c1c1e;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s;width:100%;letter-spacing:-0.1px}
 .p-btn:active{background:#f2f2f7;transform:scale(0.97)}
-.p-btn.done{opacity:0.38;cursor:default}
-.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.p-btn.done{opacity:0.35;cursor:default}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .dot-g{background:#34c759}.dot-a{background:#ff9500}.dot-r{background:#ff3b30}.dot-x{background:#c7c7cc}
-.player-big{font-size:22px;font-weight:700;letter-spacing:-0.4px;color:#1c1c1e;margin-bottom:1.25rem}
-.card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px}
-.sec-label{font-size:11px;font-weight:700;color:#8e8e93;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px}
-.q-label{font-size:16px;font-weight:500;color:#1c1c1e;margin-bottom:4px}
-.q-sub{font-size:13px;color:#8e8e93;margin-bottom:10px}
+
+.player-big{font-size:24px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:1.25rem}
+.card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px;border:1px solid rgba(0,0,0,0.06)}
+.sec-label{font-size:10px;font-weight:700;color:#aeaeb2;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px}
+.q-label{font-size:15px;font-weight:500;color:#1c1c1e;margin-bottom:3px}
+.q-sub{font-size:12px;color:#aeaeb2;margin-bottom:10px}
 .stars{display:flex;gap:6px}
-.star-btn{flex:1;height:58px;border-radius:12px;border:none;background:#f2f2f7;font-size:22px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:all 0.15s}
-.star-btn span.num{font-size:11px;color:#8e8e93;font-weight:600}
-.star-btn.sel{background:#fde8b8;border:1.5px solid #ff9500}
+.star-btn{flex:1;height:54px;border-radius:12px;border:1px solid #e5e5ea;background:#f2f2f7;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#aeaeb2;transition:all 0.15s}
+.star-btn.sel{background:#fde8b8;border-color:#ff9500;color:#b06000}
 .star-btn:active{transform:scale(0.92)}
 .yn-row{display:flex;gap:8px}
-.yn-btn{flex:1;padding:14px;border-radius:12px;border:none;background:#f2f2f7;font-size:16px;font-weight:600;cursor:pointer;color:#1c1c1e;transition:all 0.15s}
-.yn-btn.sel-j{background:#ffd6d6;color:#c0392b}
-.yn-btn.sel-n{background:#d1f0c2;color:#2d6a1f}
-textarea{width:100%;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;color:#1c1c1e;padding:10px 12px;font-size:15px;resize:none;font-family:inherit;margin-top:8px;line-height:1.5}
+.yn-btn{flex:1;padding:14px;border-radius:12px;border:1px solid #e5e5ea;background:#f2f2f7;font-size:15px;font-weight:600;cursor:pointer;color:#1c1c1e;text-align:center;transition:all 0.15s}
+.yn-btn:active{transform:scale(0.97)}
+.yn-btn.sel-j{background:#fff0f0;border-color:#ffb3b3;color:#cc2222}
+.yn-btn.sel-n{background:#e8f8ee;border-color:#a3d9b3;color:#1a7a3a}
+textarea{width:100%;border-radius:12px;border:1px solid #e5e5ea;background:#f2f2f7;color:#1c1c1e;padding:10px 12px;font-size:14px;resize:none;font-family:inherit;margin-top:8px;line-height:1.5}
 textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .ready-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.ready-btn{padding:13px 6px;border-radius:12px;border:none;background:#f2f2f7;font-size:13px;font-weight:600;cursor:pointer;color:#1c1c1e;text-align:center;line-height:1.4;transition:all 0.15s}
-.ready-btn.sel-100{background:#d1f0c2;color:#2d6a1f}
-.ready-btn.sel-part{background:#fde8b8;color:#7d4e00}
-.ready-btn.sel-no{background:#ffd6d6;color:#c0392b}
-.submit-btn{width:100%;padding:16px;border-radius:14px;border:none;background:#1c1c1e;color:#fff;font-size:17px;font-weight:700;cursor:pointer;margin-top:8px;transition:all 0.15s}
+.ready-btn{padding:14px 4px;border-radius:12px;border:1px solid #e5e5ea;background:#f2f2f7;font-size:12px;font-weight:600;cursor:pointer;color:#1c1c1e;text-align:center;line-height:1.5;transition:all 0.15s}
+.ready-btn:active{transform:scale(0.97)}
+.ready-btn.sel-100{background:#e8f8ee;border-color:#a3d9b3;color:#1a7a3a}
+.ready-btn.sel-part{background:#fff5e6;border-color:#ffc266;color:#b06000}
+.ready-btn.sel-no{background:#fff0f0;border-color:#ffb3b3;color:#cc2222}
+.submit-btn{width:100%;padding:16px;border-radius:14px;border:none;background:#1c1c1e;color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin-top:8px;letter-spacing:-0.2px;transition:all 0.15s}
 .submit-btn:active{background:#3a3a3c;transform:scale(0.98)}
 .submit-btn:disabled{background:#c7c7cc}
-.success-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#fff;text-align:center}
-.loading{text-align:center;padding:3rem;color:#8e8e93;font-size:15px}
-.spinner{display:inline-block;width:24px;height:24px;border:2.5px solid #e5e5ea;border-top-color:#007aff;border-radius:50%;animation:spin 0.7s linear infinite;margin-bottom:12px}
+.success-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#f0eff4;text-align:center}
+.loading{text-align:center;padding:3rem;color:#aeaeb2;font-size:14px}
+.spinner{display:inline-block;width:22px;height:22px;border:2px solid #e5e5ea;border-top-color:#007aff;border-radius:50%;animation:spin 0.7s linear infinite;margin-bottom:12px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.login-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#fff;gap:12px}
-.login-input{width:100%;max-width:340px;padding:15px 16px;border-radius:14px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:17px;color:#1c1c1e;font-family:inherit;letter-spacing:0.1em;text-align:center}
-.login-input:focus{outline:none;border-color:#007aff;background:#fff}
-.login-error{font-size:14px;color:#ff3b30;min-height:20px;text-align:center}
-.dash-wrap{max-width:480px;margin:0 auto;background:#f2f2f7;min-height:100vh;padding:0 0 3rem}
-.dash-header{padding:1.25rem 1.25rem 0.5rem;display:flex;align-items:flex-start;justify-content:space-between}
-.dash-title{font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e}
-.dash-sub{font-size:14px;color:#8e8e93;margin-top:2px}
-.dash-date{font-size:12px;color:#8e8e93;text-align:right;line-height:1.6}
-.seg{display:flex;background:#e5e5ea;border-radius:11px;padding:2px;margin:0.75rem 1.25rem 0}
-.seg button{flex:1;padding:7px 2px;border:none;border-radius:9px;background:transparent;font-size:10px;font-weight:600;color:#8e8e93;cursor:pointer;transition:all 0.18s}
-.seg button.on{background:#fff;color:#1c1c1e;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+.login-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#f0eff4;gap:12px;text-align:center}
+.login-input{width:100%;max-width:320px;padding:15px 16px;border-radius:14px;border:1px solid #d1d1d6;background:#fff;font-size:17px;color:#1c1c1e;font-family:inherit;letter-spacing:0.1em;text-align:center}
+.login-input:focus{outline:none;border-color:#007aff}
+.login-error{font-size:13px;color:#ff3b30;min-height:20px;text-align:center}
+
+.dash-wrap{max-width:480px;margin:0 auto;background:#f0eff4;min-height:100vh;padding:0 0 3rem}
+.dash-header{padding:1.5rem 1.25rem 0.75rem;display:flex;align-items:flex-start;justify-content:space-between}
+.dash-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.18em;color:#aeaeb2;text-transform:uppercase;margin-bottom:4px}
+.dash-title{font-size:30px;font-weight:800;letter-spacing:-1.5px;color:#1c1c1e}
+.dash-date{font-size:11px;color:#aeaeb2;text-align:right;line-height:1.7}
+.seg{display:flex;background:#e5e5ea;border-radius:12px;padding:3px;margin:0.75rem 1.25rem 0}
+.seg button{flex:1;padding:7px 2px;border:none;border-radius:9px;background:transparent;font-size:9px;font-weight:700;color:#aeaeb2;cursor:pointer;transition:all 0.18s;letter-spacing:0.05em;text-transform:uppercase}
+.seg button.on{background:#fff;color:#1c1c1e;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
 .view{display:none;padding:0 1.25rem}.view.on{display:block}
-.d-sec{font-size:13px;font-weight:700;color:#8e8e93;letter-spacing:0.04em;text-transform:uppercase;margin:1.25rem 0 0.5rem;display:flex;align-items:center;justify-content:space-between}
-.d-sec-btn{background:none;border:none;color:#007aff;font-size:13px;font-weight:600;cursor:pointer;text-transform:none;letter-spacing:0}
-.d-card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px}
-.d-card-tight{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:10px}
-.m4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px}
-.met{background:#fff;border-radius:16px;padding:1rem}
-.met-val{font-size:30px;font-weight:700;letter-spacing:-0.8px;color:#1c1c1e;line-height:1}
-.met-val span{font-size:18px;font-weight:500;color:#8e8e93}
-.met-lbl{font-size:13px;color:#8e8e93;margin-top:4px}
+.d-sec{font-size:10px;font-weight:700;color:#aeaeb2;letter-spacing:0.18em;text-transform:uppercase;margin:1.25rem 0 0.5rem;display:flex;align-items:center;justify-content:space-between}
+.d-sec-btn{background:none;border:none;color:#007aff;font-size:12px;font-weight:600;cursor:pointer;text-transform:none;letter-spacing:0}
+.d-card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px;border:1px solid rgba(0,0,0,0.06)}
+.d-card-tight{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(0,0,0,0.06)}
+.m4{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.met{background:#fff;border-radius:16px;padding:14px 16px;border:1px solid rgba(0,0,0,0.06)}
+.met-val{font-size:30px;font-weight:700;letter-spacing:-1px;color:#1c1c1e;line-height:1}
+.met-val span{font-size:17px;font-weight:400;color:#aeaeb2}
+.met-lbl{font-size:10px;color:#aeaeb2;margin-top:4px;letter-spacing:0.06em;text-transform:uppercase}
 .met-red .met-val{color:#ff3b30}
-.prow{display:flex;align-items:center;gap:12px;padding:11px 1.125rem;border-bottom:0.5px solid #f2f2f7;background:#fff;transition:background 0.1s}
+.prow{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:0.5px solid #f2f2f7;background:#fff;transition:background 0.1s}
 .prow:last-child{border-bottom:none}
-.prow.clickable{cursor:pointer}.prow.clickable:active{background:#f9f9f9}
-.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
-.av-g{background:#d1f0c2;color:#2d6a1f}.av-a{background:#fde8b8;color:#7d4e00}.av-r{background:#ffd6d6;color:#c0392b}.av-x{background:#e5e5ea;color:#8e8e93}
-.pname{font-size:15px;font-weight:500;flex:1;color:#1c1c1e;letter-spacing:-0.1px}
-.psub{font-size:12px;color:#8e8e93;margin-top:1px}
-.pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
-.pill-g{background:#d1f0c2;color:#2d6a1f}.pill-a{background:#fde8b8;color:#7d4e00}.pill-r{background:#ffd6d6;color:#c0392b}.pill-x{background:#e5e5ea;color:#8e8e93}
-.chev{color:#c7c7cc;font-size:20px;font-weight:300;flex-shrink:0;margin-left:4px}
-.bar-track{height:4px;background:#f2f2f7;border-radius:2px;flex:1;overflow:hidden;margin:0 8px}
+.prow.clickable{cursor:pointer}.prow.clickable:active{background:#fafafa}
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.av-g{background:#e8f8ee;color:#1a7a3a}.av-a{background:#fff5e6;color:#b06000}.av-r{background:#fff0f0;color:#cc2222}.av-x{background:#f2f2f7;color:#aeaeb2}
+.pname{font-size:14px;font-weight:500;flex:1;color:#1c1c1e;letter-spacing:-0.1px}
+.psub{font-size:11px;color:#aeaeb2;margin-top:1px}
+.pill{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;letter-spacing:0.04em}
+.pill-g{background:#e8f8ee;color:#1a7a3a}.pill-a{background:#fff5e6;color:#b06000}.pill-r{background:#fff0f0;color:#cc2222}.pill-x{background:#f2f2f7;color:#aeaeb2}
+.chev{color:#c7c7cc;font-size:18px;font-weight:300;flex-shrink:0;margin-left:4px}
+.bar-track{height:3px;background:#f2f2f7;border-radius:2px;flex:1;overflow:hidden;margin:0 8px}
 .bar-fill{height:100%;border-radius:2px}
 .alert-card{background:#fff0f0;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px;border:1px solid #ffd6d6}
 .legend-row{display:flex;gap:16px;margin-bottom:10px}
-.leg{display:flex;align-items:center;gap:5px;font-size:12px;color:#8e8e93}
-.leg-sq{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.leg{display:flex;align-items:center;gap:5px;font-size:12px;color:#aeaeb2}
+.leg-sq{width:9px;height:9px;border-radius:2px;flex-shrink:0}
 .dr{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:0.5px solid #f2f2f7}
 .dr:last-child{border-bottom:none}
-.dl{font-size:14px;color:#8e8e93}
-.dv{font-size:14px;font-weight:500;color:#1c1c1e;text-align:right;max-width:60%}
-.ring-wrap{position:relative;width:130px;height:130px}
+.dl{font-size:13px;color:#aeaeb2}
+.dv{font-size:13px;font-weight:500;color:#1c1c1e;text-align:right;max-width:60%}
+.ring-wrap{position:relative;width:120px;height:120px}
 .ring-wrap svg{transform:rotate(-90deg)}
 .ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-.add-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:16px;color:#1c1c1e;font-family:inherit;margin-bottom:10px}
-.add-input:focus{outline:none;border-color:#007aff;background:#fff}
-.del-btn{background:none;border:none;color:#ff3b30;font-size:22px;cursor:pointer;padding:4px;flex-shrink:0}
-.red-btn{width:100%;padding:14px;border-radius:14px;border:1.5px solid #ffd6d6;background:#fff0f0;color:#ff3b30;font-size:15px;font-weight:600;cursor:pointer;margin-top:10px}
-.note-area{width:100%;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;color:#1c1c1e;padding:10px 12px;font-size:14px;resize:none;font-family:inherit;line-height:1.5;margin-top:6px}
+.add-input{width:100%;padding:13px 16px;border-radius:12px;border:1px solid #d1d1d6;background:#fff;font-size:15px;color:#1c1c1e;font-family:inherit;margin-bottom:10px}
+.add-input:focus{outline:none;border-color:#007aff}
+.del-btn{background:none;border:none;color:#ff3b30;font-size:20px;cursor:pointer;padding:4px;flex-shrink:0}
+.red-btn{width:100%;padding:14px;border-radius:14px;border:1px solid #ffd6d6;background:#fff0f0;color:#ff3b30;font-size:14px;font-weight:600;cursor:pointer;margin-top:10px;letter-spacing:-0.1px}
+.note-area{width:100%;border-radius:12px;border:1px solid #e5e5ea;background:#f2f2f7;color:#1c1c1e;padding:10px 12px;font-size:13px;resize:none;font-family:inherit;line-height:1.5;margin-top:6px}
 .note-area:focus{outline:none;border-color:#007aff;background:#fff}
-.deadline-banner{background:#fde8b8;border-radius:12px;padding:10px 14px;margin-bottom:10px;font-size:13px;color:#7d4e00;font-weight:500;text-align:center}
+.deadline-banner{background:#fde8b8;border-radius:12px;padding:10px 14px;margin-bottom:10px;font-size:13px;color:#b06000;font-weight:500;text-align:center;border:1px solid #ffc266}
 .closed-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;text-align:center;padding:2rem}
-.check-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid #e5e5ea;background:#f2f2f7;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s}
-.check-btn.done{background:#d1f0c2;border-color:#3B6D11}
+.check-btn{width:32px;height:32px;border-radius:50%;border:1px solid #d1d1d6;background:#f2f2f7;cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;color:#aeaeb2}
+.check-btn.done{background:#e8f8ee;border-color:#a3d9b3;color:#1a7a3a}
 </style>
 </head>
 <body>
@@ -115,13 +125,15 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <!-- STARTSEITE -->
 <div class="screen active" id="s-role">
   <div class="role-wrap">
-    <div style="font-size:36px;font-weight:900;letter-spacing:-1px;color:#1c1c1e;margin-bottom:0.5rem">DHB MU16</div>
-    <div class="role-sub">Tagescheck-in</div>
-    <button class="role-btn role-btn-main" id="btn-checkin">Ich bin Spieler</button>
-    <button class="role-btn role-btn-sec" id="btn-login">Trainer-Dashboard</button>
-    <button class="role-btn role-btn-sec" id="btn-physio" style="border:1.5px solid #007aff;color:#007aff">Physio-Warteliste</button>
-    <div id="session-btn-wrap" style="width:100%;max-width:340px;">
-      <button class="role-btn" id="btn-session" style="background:#5856d6;color:#fff">Einheit bewerten 💪</button>
+    <div class="eyebrow">Deutscher Hockey-Bund</div>
+    <div class="big-title">DHB</div>
+    <div class="big-sub">MU16</div>
+    <div class="btn-stack">
+      <button class="role-btn role-btn-main" id="btn-checkin">Ich bin Spieler</button>
+      <button class="role-btn role-btn-sec" id="btn-login">Trainer-Dashboard</button>
+      <div style="height:1px;background:#e5e5ea"></div>
+      <button class="role-btn role-btn-muted" id="btn-physio">Physio-Termin buchen</button>
+      <button class="role-btn role-btn-blue" id="btn-session">Einheit bewerten</button>
     </div>
   </div>
 </div>
@@ -129,9 +141,9 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <!-- LOGIN -->
 <div class="screen" id="s-login">
   <div class="login-wrap">
-    <div style="font-size:36px;font-weight:900;letter-spacing:-1px;color:#1c1c1e;margin-bottom:0.5rem">DHB MU16</div>
-    <div style="font-size:20px;font-weight:700;color:#1c1c1e;margin-bottom:4px">Passwort eingeben</div>
-    <div style="font-size:14px;color:#8e8e93;margin-bottom:1rem">Nur für Trainer</div>
+    <div class="eyebrow" style="margin-bottom:0.5rem">Trainer-Zugang</div>
+    <div style="font-size:32px;font-weight:800;letter-spacing:-1.5px;color:#1c1c1e;margin-bottom:4px">DHB MU16</div>
+    <div style="font-size:13px;color:#aeaeb2;margin-bottom:1.5rem">Passwort eingeben</div>
     <input class="login-input" type="password" id="pw-input" placeholder="••••••••">
     <div class="login-error" id="pw-error"></div>
     <button class="role-btn role-btn-main" id="btn-login-submit" style="margin-top:4px">Einloggen</button>
@@ -193,9 +205,9 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       <div class="sec-label">Einsatz</div>
       <div class="q-label">Bist du heute 100% einsatzfähig?</div>
       <div class="ready-row">
-        <button class="ready-btn" id="ready-ja">✅ Ja,<br>voll dabei</button>
-        <button class="ready-btn" id="ready-teil">⚠️ Teils<br>eingeschränkt</button>
-        <button class="ready-btn" id="ready-nein">❌ Nein,<br>nicht fit</button>
+        <button class="ready-btn" id="ready-ja">Ja,<br>voll dabei</button>
+        <button class="ready-btn" id="ready-teil">Teils<br>eingeschränkt</button>
+        <button class="ready-btn" id="ready-nein">Nein,<br>nicht fit</button>
       </div>
     </div>
     <button class="submit-btn" id="submit-btn">Check-in abschicken</button>
@@ -206,10 +218,10 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <!-- CHECKIN SUCCESS -->
 <div class="screen" id="s-success">
   <div class="success-wrap">
-    <div style="font-size:72px;margin-bottom:1rem">✅</div>
-    <div style="font-size:24px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Alles klar!</div>
-    <div style="font-size:16px;color:#8e8e93;margin-bottom:2.5rem" id="success-name"></div>
-    <button class="role-btn role-btn-sec" id="btn-next-player" style="max-width:280px">Nächster Spieler</button>
+    <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a7a3a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div style="font-size:24px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:8px">Alles klar!</div>
+    <div style="font-size:14px;color:#aeaeb2;margin-bottom:2.5rem" id="success-name"></div>
+    <button class="role-btn role-btn-sec" id="btn-next-player" style="max-width:280px;border:1px solid #d1d1d6 !important">Nächster Spieler</button>
   </div>
 </div>
 
@@ -217,7 +229,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <div class="screen" id="s-physio">
   <div class="ci-wrap">
     <button class="back-btn" id="btn-physio-back">‹ Zurück</button>
-    <div class="page-title">Physio-Termin</div>
+    <div class="page-title">Physio</div>
     <div class="page-sub" id="physio-date"></div>
     <div id="physio-status-card"></div>
     <div class="d-sec" style="margin-top:0">Ich möchte einen Termin</div>
@@ -229,7 +241,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <div class="screen" id="s-session">
   <div class="form-wrap">
     <button class="back-btn" id="btn-session-back">‹ Zurück</button>
-    <div style="font-size:13px;font-weight:700;color:#8e8e93;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px" id="session-unit-label"></div>
+    <div style="font-size:10px;font-weight:700;color:#aeaeb2;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:4px" id="session-unit-label"></div>
     <div class="page-title">Einheit bewerten</div>
     <div class="page-sub">Anonym — kein Name nötig</div>
     <div id="session-closed-msg" style="display:none;text-align:center;padding:3rem 1rem">
@@ -249,7 +261,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
           <span>😌 Sehr leicht</span><span>😰 Extrem hart</span>
         </div>
       </div>
-      <button class="submit-btn" id="session-submit-btn" style="background:#5856d6">Anonym abschicken</button>
+      <button class="submit-btn" id="session-submit-btn" style="background:#007aff">Anonym abschicken</button>
       <div style="height:2rem"></div>
     </div>
   </div>
@@ -258,10 +270,10 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 <!-- EINHEIT SUCCESS -->
 <div class="screen" id="s-session-success">
   <div class="success-wrap">
-    <div style="font-size:72px;margin-bottom:1rem">💪</div>
-    <div style="font-size:24px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Danke!</div>
-    <div style="font-size:16px;color:#8e8e93;margin-bottom:2.5rem">Deine Bewertung wurde gespeichert.</div>
-    <button class="role-btn role-btn-sec" id="btn-session-next" style="max-width:280px">Weitere Bewertung</button>
+    <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a7a3a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div style="font-size:24px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:8px">Danke!</div>
+    <div style="font-size:14px;color:#aeaeb2;margin-bottom:2.5rem">Bewertung gespeichert.</div>
+    <button class="role-btn role-btn-sec" id="btn-session-next" style="max-width:280px;border:1px solid #d1d1d6 !important">Weitere Bewertung</button>
   </div>
 </div>
 
@@ -270,13 +282,13 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
   <div class="dash-wrap">
     <div class="dash-header">
       <div>
+        <div class="dash-eyebrow">Trainer · Übersicht</div>
         <div class="dash-title">DHB MU16</div>
-        <div class="dash-sub">Trainer-Dashboard</div>
       </div>
       <div style="text-align:right">
         <div class="dash-date" id="dash-date"></div>
         <div style="display:flex;gap:8px;margin-top:6px;justify-content:flex-end">
-          <button id="btn-refresh" style="background:none;border:none;color:#007aff;font-size:12px;cursor:pointer">↻ Aktualisieren</button>
+          <button id="btn-refresh" style="background:none;border:none;color:#007aff;font-size:12px;cursor:pointer">Aktualisieren</button>
           <button id="btn-abmelden" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer">Abmelden</button>
         </div>
       </div>
@@ -308,7 +320,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       </div>
       <div class="m4" id="today-metrics"></div>
       <div id="today-alerts"></div>
-      <div class="d-sec">Mannschaft<button class="d-sec-btn" id="btn-csv">⬇ CSV Export</button></div>
+      <div class="d-sec">Mannschaft<button class="d-sec-btn" id="btn-csv">CSV Export</button></div>
       <div class="d-card-tight" id="today-list"></div>
       <button class="red-btn" id="btn-reset-all" style="margin-top:12px">Alle Check-ins heute zurücksetzen</button>
     </div>
@@ -396,7 +408,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
         <div id="physio-slot-msg" style="font-size:13px;color:#34c759;margin-top:8px;min-height:18px;text-align:center"></div>
       </div>
       <div class="d-sec">Terminliste — heute<button class="d-sec-btn" id="btn-clear-physio">Alle löschen</button></div>
-      <button class="submit-btn" id="btn-physio-msg" style="background:#25d366;margin:0 0 10px">📋 Nachricht kopieren</button>
+      <button class="submit-btn" id="btn-physio-msg" style="background:#25d366;margin:0 0 10px">Nachricht kopieren</button>
       <div class="d-card-tight" id="dash-physio-list"></div>
       <div id="dash-physio-empty" style="text-align:center;font-size:13px;color:#8e8e93;margin-top:8px">Noch niemand auf der Liste</div>
     </div>
@@ -411,9 +423,9 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
           <div id="session-status-txt" style="font-size:15px;font-weight:500;color:#1c1c1e">Geschlossen</div>
         </div>
         <input class="add-input" type="text" id="session-name-input" placeholder="Name der Einheit (z.B. Vormittagstraining)" style="margin-bottom:8px">
-        <button class="submit-btn" id="btn-open-session" style="background:#5856d6">Bewertung freigeben</button>
-        <button class="submit-btn" id="btn-copy-session-link" style="background:#fff;color:#5856d6;border:1.5px solid #5856d6;margin-top:8px">🔗 Link kopieren & teilen</button>
-        <button class="red-btn" id="btn-reset-session" style="margin-top:8px">🗑 Einheit löschen & zurücksetzen</button>
+        <button class="submit-btn" id="btn-open-session" style="background:#1c1c1e">Bewertung freigeben</button>
+        <button class="submit-btn" id="btn-copy-session-link" style="background:#fff;color:#007aff;border:1.5px solid #5856d6;margin-top:8px">Link kopieren</button>
+        <button class="red-btn" id="btn-reset-session" style="margin-top:8px">Einheit löschen</button>
         <div style="margin-top:10px">
           <div style="font-size:12px;color:#8e8e93;margin-bottom:6px;font-weight:600">Einheitsnamen ändern</div>
           <div style="display:flex;gap:8px">
@@ -425,7 +437,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       <div class="d-sec">Ergebnisse heute</div>
       <div class="d-card" id="session-results-summary" style="display:none">
         <div style="text-align:center;padding:0.5rem 0">
-          <div style="font-size:48px;font-weight:700;letter-spacing:-1px;color:#5856d6" id="session-avg-big">—</div>
+          <div style="font-size:48px;font-weight:700;letter-spacing:-1px;color:#1c1c1e;letter-spacing:-2px" id="session-avg-big">—</div>
           <div style="font-size:14px;color:#8e8e93;margin-top:4px">Durchschnitt</div>
         </div>
         <div style="display:flex;gap:0;margin-top:1rem" id="session-bar-chart"></div>
@@ -547,7 +559,7 @@ function buildStars(cid,key){
   [1,2,3,4,5].forEach(i=>{
     const b=document.createElement('button');
     b.className='star-btn';b.id=cid+'-'+i;
-    b.innerHTML=`<span>${em[i-1]}</span><span class="num">${i}</span>`;
+    b.innerHTML=`<span style="font-size:18px;font-weight:700;color:inherit">${i}</span>`;
     b.addEventListener('click',()=>{formState[key]=i;for(let j=1;j<=5;j++)$(cid+'-'+j).classList.toggle('sel',j<=i);});
     $(cid).appendChild(b);
   });
@@ -773,7 +785,7 @@ function renderPhysioSignup(){
   const list=loadPhysio();const onList=list.map(e=>e.name);
   let html='<div class="d-card" style="margin-bottom:12px">';
   html+=`<div style="font-size:14px;color:#8e8e93;margin-bottom:4px">Auf der Liste: <strong style="color:#1c1c1e">${list.length}</strong> Spieler</div>`;
-  list.forEach((e,i)=>{html+=`<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid #f2f2f7"><div style="background:#e5e5ea;border-radius:8px;padding:4px 8px;font-size:13px;font-weight:700;color:#5856d6;flex-shrink:0">${e.slot||calcSlotTime(i)}</div><div class="av av-${e.done?'g':'x'}" style="width:30px;height:30px;font-size:11px">${ini(e.name)}</div><span style="font-size:14px;flex:1;${e.done?'color:#8e8e93;text-decoration:line-through':'color:#1c1c1e'}">${e.name}</span>${e.done?'<span style="font-size:11px;color:#34c759;font-weight:600">✓</span>':''}</div>`;});
+  list.forEach((e,i)=>{html+=`<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid #f2f2f7"><div style="background:#f2f2f7;border-radius:8px;padding:4px 8px;font-size:13px;font-weight:700;color:#1c1c1e;border:1px solid #e5e5ea;flex-shrink:0">${e.slot||calcSlotTime(i)}</div><div class="av av-${e.done?'g':'x'}" style="width:30px;height:30px;font-size:11px">${ini(e.name)}</div><span style="font-size:14px;flex:1;${e.done?'color:#8e8e93;text-decoration:line-through':'color:#1c1c1e'}">${e.name}</span>${e.done?'<span style="font-size:11px;color:#34c759;font-weight:600">✓</span>':''}</div>`;});
   if(!list.length)html+='<div style="font-size:13px;color:#8e8e93">Noch niemand eingetragen</div>';
   html+='</div>';
   $('physio-status-card').innerHTML=html;
@@ -805,7 +817,7 @@ function renderPhysioDash(){
   list.forEach((e,i)=>{
     const row=document.createElement('div');
     row.className='prow';
-    row.innerHTML=`<div style="background:#ede8ff;border-radius:8px;padding:5px 10px;font-size:14px;font-weight:700;color:#5856d6;flex-shrink:0;min-width:52px;text-align:center">${e.slot||calcSlotTime(i)}</div><div class="av ${e.done?'av-g':'av-r'}" style="margin-left:4px">${ini(e.name)}</div><div style="flex:1"><div class="pname" style="${e.done?'text-decoration:line-through;color:#8e8e93':''}">${e.name}</div></div>`;
+    row.innerHTML=`<div style="background:#f2f2f7;border-radius:8px;padding:5px 10px;font-size:14px;font-weight:700;color:#1c1c1e;border:1px solid #e5e5ea;flex-shrink:0;min-width:52px;text-align:center">${e.slot||calcSlotTime(i)}</div><div class="av ${e.done?'av-g':'av-r'}" style="margin-left:4px">${ini(e.name)}</div><div style="flex:1"><div class="pname" style="${e.done?'text-decoration:line-through;color:#8e8e93':''}">${e.name}</div></div>`;
     const cb=document.createElement('button');
     cb.className='check-btn'+(e.done?' done':'');cb.textContent=e.done?'✓':'';
     cb.addEventListener('click',()=>{const l=loadPhysio();l[i].done=!l[i].done;savePhysio(l);renderPhysioDash();});
@@ -957,8 +969,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const msg='Hi Jungs, hier die Physio Slots:\n\n'+slots;
     navigator.clipboard.writeText(msg).then(()=>{
       const b=$('btn-physio-msg');
-      b.textContent='✓ Kopiert!';
-      setTimeout(()=>b.textContent='📋 Nachricht kopieren',2500);
+      b.textContent='Kopiert!';
+      setTimeout(()=>b.textContent='Nachricht kopieren',2500);
     }).catch(()=>{
       prompt('Nachricht kopieren:',msg);
     });
@@ -997,8 +1009,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const link='https://grafmarv.github.io/DHB-MU16-Ready/?bewerten';
     navigator.clipboard.writeText(link).then(()=>{
       const b=$('btn-copy-session-link');
-      b.textContent='✓ Link kopiert — in WhatsApp einfügen!';
-      setTimeout(()=>b.textContent='🔗 Link kopieren & teilen',3000);
+      b.textContent='Link kopiert!';
+      setTimeout(()=>b.textContent='Link kopieren',3000);
     }).catch(()=>prompt('Link kopieren:',link));
   });
   $('btn-toggle-session').addEventListener('click',()=>{
