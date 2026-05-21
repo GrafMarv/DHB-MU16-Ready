@@ -953,7 +953,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   $('btn-physio-msg').addEventListener('click',()=>{
     const list=loadPhysio();
     if(!list.length){alert('Noch niemand auf der Liste.');return;}
-    const slots=list.map((e,i)=>e.slot||calcSlotTime(i)+' – '+e.name).join('\n');
+    const slots=list.map((e,i)=>(e.slot||calcSlotTime(i))+' – '+e.name).join('\n');
     const msg='Hi Jungs, hier die Physio Slots:\n\n'+slots;
     navigator.clipboard.writeText(msg).then(()=>{
       const b=$('btn-physio-msg');
