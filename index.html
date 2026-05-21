@@ -1,29 +1,29 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>DHB MU16 – Check-in</title>
+<title>DHB MU16</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#f2f2f7;color:#1c1c1e;-webkit-tap-highlight-color:transparent}
 .screen{display:none;min-height:100vh}.screen.active{display:block}
 .role-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;gap:12px;background:#fff}
 .role-sub{font-size:15px;color:#8e8e93;margin-bottom:2rem;text-align:center}
-.role-btn{width:100%;max-width:340px;padding:16px;border-radius:14px;border:none;font-size:17px;font-weight:600;cursor:pointer;transition:all 0.15s;letter-spacing:-0.2px}
+.role-btn{width:100%;max-width:340px;padding:16px;border-radius:14px;border:none;font-size:17px;font-weight:600;cursor:pointer;transition:all 0.15s}
 .role-btn-main{background:#1c1c1e;color:#fff}.role-btn-main:active{background:#3a3a3c}
 .role-btn-sec{background:#f2f2f7;color:#1c1c1e}.role-btn-sec:active{background:#e5e5ea}
 .ci-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
+.form-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
 .page-title{font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#1c1c1e;margin-bottom:4px}
 .page-sub{font-size:15px;color:#8e8e93;margin-bottom:1.25rem}
 .back-btn{display:flex;align-items:center;gap:3px;background:none;border:none;color:#007aff;font-size:17px;cursor:pointer;padding:0;margin-bottom:1rem}
 .player-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.p-btn{padding:13px 10px;border-radius:13px;border:none;background:#fff;font-size:13px;font-weight:500;cursor:pointer;color:#1c1c1e;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s}
+.p-btn{padding:13px 10px;border-radius:13px;border:none;background:#fff;font-size:13px;font-weight:500;cursor:pointer;color:#1c1c1e;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s;width:100%}
 .p-btn:active{background:#f2f2f7;transform:scale(0.97)}
 .p-btn.done{opacity:0.38;cursor:default}
 .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .dot-g{background:#34c759}.dot-a{background:#ff9500}.dot-r{background:#ff3b30}.dot-x{background:#c7c7cc}
-.form-wrap{max-width:480px;margin:0 auto;padding:1.25rem}
 .player-big{font-size:22px;font-weight:700;letter-spacing:-0.4px;color:#1c1c1e;margin-bottom:1.25rem}
 .card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px}
 .sec-label{font-size:11px;font-weight:700;color:#8e8e93;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px}
@@ -36,18 +36,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sa
 .star-btn:active{transform:scale(0.92)}
 .yn-row{display:flex;gap:8px}
 .yn-btn{flex:1;padding:14px;border-radius:12px;border:none;background:#f2f2f7;font-size:16px;font-weight:600;cursor:pointer;color:#1c1c1e;transition:all 0.15s}
-.yn-btn:active{transform:scale(0.97)}
 .yn-btn.sel-j{background:#ffd6d6;color:#c0392b}
 .yn-btn.sel-n{background:#d1f0c2;color:#2d6a1f}
 textarea{width:100%;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;color:#1c1c1e;padding:10px 12px;font-size:15px;resize:none;font-family:inherit;margin-top:8px;line-height:1.5}
 textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .ready-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
 .ready-btn{padding:13px 6px;border-radius:12px;border:none;background:#f2f2f7;font-size:13px;font-weight:600;cursor:pointer;color:#1c1c1e;text-align:center;line-height:1.4;transition:all 0.15s}
-.ready-btn:active{transform:scale(0.97)}
 .ready-btn.sel-100{background:#d1f0c2;color:#2d6a1f}
 .ready-btn.sel-part{background:#fde8b8;color:#7d4e00}
 .ready-btn.sel-no{background:#ffd6d6;color:#c0392b}
-.submit-btn{width:100%;padding:16px;border-radius:14px;border:none;background:#1c1c1e;color:#fff;font-size:17px;font-weight:700;cursor:pointer;margin-top:8px;letter-spacing:-0.2px;transition:all 0.15s}
+.submit-btn{width:100%;padding:16px;border-radius:14px;border:none;background:#1c1c1e;color:#fff;font-size:17px;font-weight:700;cursor:pointer;margin-top:8px;transition:all 0.15s}
 .submit-btn:active{background:#3a3a3c;transform:scale(0.98)}
 .submit-btn:disabled{background:#c7c7cc}
 .success-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#fff;text-align:center}
@@ -64,11 +62,11 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .dash-sub{font-size:14px;color:#8e8e93;margin-top:2px}
 .dash-date{font-size:12px;color:#8e8e93;text-align:right;line-height:1.6}
 .seg{display:flex;background:#e5e5ea;border-radius:11px;padding:2px;margin:0.75rem 1.25rem 0}
-.seg button{flex:1;padding:8px 2px;border:none;border-radius:9px;background:transparent;font-size:11px;font-weight:600;color:#8e8e93;cursor:pointer;transition:all 0.18s}
+.seg button{flex:1;padding:7px 2px;border:none;border-radius:9px;background:transparent;font-size:10px;font-weight:600;color:#8e8e93;cursor:pointer;transition:all 0.18s}
 .seg button.on{background:#fff;color:#1c1c1e;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
 .view{display:none;padding:0 1.25rem}.view.on{display:block}
-.d-section{font-size:13px;font-weight:700;color:#8e8e93;letter-spacing:0.04em;text-transform:uppercase;margin:1.25rem 0 0.5rem;display:flex;align-items:center;justify-content:space-between}
-.d-section-btn{background:none;border:none;color:#007aff;font-size:13px;font-weight:600;cursor:pointer;text-transform:none;letter-spacing:0}
+.d-sec{font-size:13px;font-weight:700;color:#8e8e93;letter-spacing:0.04em;text-transform:uppercase;margin:1.25rem 0 0.5rem;display:flex;align-items:center;justify-content:space-between}
+.d-sec-btn{background:none;border:none;color:#007aff;font-size:13px;font-weight:600;cursor:pointer;text-transform:none;letter-spacing:0}
 .d-card{background:#fff;border-radius:16px;padding:1rem 1.125rem;margin-bottom:10px}
 .d-card-tight{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:10px}
 .m4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px}
@@ -77,9 +75,9 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .met-val span{font-size:18px;font-weight:500;color:#8e8e93}
 .met-lbl{font-size:13px;color:#8e8e93;margin-top:4px}
 .met-red .met-val{color:#ff3b30}
-.prow{display:flex;align-items:center;gap:12px;padding:11px 1.125rem;border-bottom:0.5px solid #f2f2f7;cursor:pointer;background:#fff;transition:background 0.1s}
+.prow{display:flex;align-items:center;gap:12px;padding:11px 1.125rem;border-bottom:0.5px solid #f2f2f7;background:#fff;transition:background 0.1s}
 .prow:last-child{border-bottom:none}
-.prow:active{background:#f9f9f9}
+.prow.clickable{cursor:pointer}.prow.clickable:active{background:#f9f9f9}
 .av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
 .av-g{background:#d1f0c2;color:#2d6a1f}.av-a{background:#fde8b8;color:#7d4e00}.av-r{background:#ffd6d6;color:#c0392b}.av-x{background:#e5e5ea;color:#8e8e93}
 .pname{font-size:15px;font-weight:500;flex:1;color:#1c1c1e;letter-spacing:-0.1px}
@@ -103,26 +101,28 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 .add-input{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:16px;color:#1c1c1e;font-family:inherit;margin-bottom:10px}
 .add-input:focus{outline:none;border-color:#007aff;background:#fff}
 .del-btn{background:none;border:none;color:#ff3b30;font-size:22px;cursor:pointer;padding:4px;flex-shrink:0}
-.red-btn{width:100%;padding:14px;border-radius:14px;border:1.5px solid #ffd6d6;background:#fff0f0;color:#ff3b30;font-size:15px;font-weight:600;cursor:pointer;margin-top:10px;transition:all 0.15s}
-.red-btn:active{background:#ffd6d6}
+.red-btn{width:100%;padding:14px;border-radius:14px;border:1.5px solid #ffd6d6;background:#fff0f0;color:#ff3b30;font-size:15px;font-weight:600;cursor:pointer;margin-top:10px}
 .note-area{width:100%;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;color:#1c1c1e;padding:10px 12px;font-size:14px;resize:none;font-family:inherit;line-height:1.5;margin-top:6px}
 .note-area:focus{outline:none;border-color:#007aff;background:#fff}
 .deadline-banner{background:#fde8b8;border-radius:12px;padding:10px 14px;margin-bottom:10px;font-size:13px;color:#7d4e00;font-weight:500;text-align:center}
-.closed-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:2rem}
+.closed-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;text-align:center;padding:2rem}
 .check-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid #e5e5ea;background:#f2f2f7;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s}
 .check-btn.done{background:#d1f0c2;border-color:#3B6D11}
 </style>
 </head>
 <body>
 
-<!-- ROLE -->
+<!-- STARTSEITE -->
 <div class="screen active" id="s-role">
   <div class="role-wrap">
     <div style="font-size:36px;font-weight:900;letter-spacing:-1px;color:#1c1c1e;margin-bottom:0.5rem">DHB MU16</div>
     <div class="role-sub">Tagescheck-in</div>
-    <button class="role-btn role-btn-main" onclick="initCheckin()">Ich bin Spieler</button>
-    <button class="role-btn role-btn-sec" onclick="show('s-login')">Trainer-Dashboard</button>
-    <button class="role-btn role-btn-sec" onclick="initPhysioSignup()" style="border:1.5px solid #007aff;color:#007aff">Physio-Warteliste</button>
+    <button class="role-btn role-btn-main" id="btn-checkin">Ich bin Spieler</button>
+    <button class="role-btn role-btn-sec" id="btn-login">Trainer-Dashboard</button>
+    <button class="role-btn role-btn-sec" id="btn-physio" style="border:1.5px solid #007aff;color:#007aff">Physio-Warteliste</button>
+    <div id="session-btn-wrap" style="width:100%;max-width:340px;display:none">
+      <button class="role-btn" id="btn-session" style="background:#5856d6;color:#fff">Einheit bewerten 💪</button>
+    </div>
   </div>
 </div>
 
@@ -132,17 +132,17 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <div style="font-size:36px;font-weight:900;letter-spacing:-1px;color:#1c1c1e;margin-bottom:0.5rem">DHB MU16</div>
     <div style="font-size:20px;font-weight:700;color:#1c1c1e;margin-bottom:4px">Passwort eingeben</div>
     <div style="font-size:14px;color:#8e8e93;margin-bottom:1rem">Nur für Trainer</div>
-    <input class="login-input" type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPW()">
+    <input class="login-input" type="password" id="pw-input" placeholder="••••••••">
     <div class="login-error" id="pw-error"></div>
-    <button class="role-btn role-btn-main" style="margin-top:4px" onclick="checkPW()">Einloggen</button>
-    <button class="role-btn role-btn-sec" onclick="show('s-role')">Zurück</button>
+    <button class="role-btn role-btn-main" id="btn-login-submit" style="margin-top:4px">Einloggen</button>
+    <button class="role-btn role-btn-sec" id="btn-login-back">Zurück</button>
   </div>
 </div>
 
-<!-- PLAYER SELECT -->
+<!-- SPIELER AUSWAHL -->
 <div class="screen" id="s-checkin">
   <div class="ci-wrap">
-    <button class="back-btn" onclick="show('s-role')">‹ Zurück</button>
+    <button class="back-btn" id="btn-checkin-back">‹ Zurück</button>
     <div class="page-title">Wer bist du?</div>
     <div class="page-sub">Tippe deinen Namen an</div>
     <div id="deadline-banner"></div>
@@ -150,10 +150,10 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
   </div>
 </div>
 
-<!-- FORM -->
+<!-- FORMULAR -->
 <div class="screen" id="s-form">
   <div class="form-wrap">
-    <button class="back-btn" onclick="show('s-checkin')">‹ Zurück</button>
+    <button class="back-btn" id="btn-form-back">‹ Zurück</button>
     <div class="player-big" id="form-name"></div>
     <div class="card">
       <div class="sec-label">Schlaf</div>
@@ -170,9 +170,9 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <div class="card">
       <div class="sec-label">Körper</div>
       <div class="q-label">Hast du körperliche Schmerzen?</div>
-      <div class="yn-row" id="q-schmerz-row">
-        <button class="yn-btn" onclick="pickYN('schmerz','ja',true)">Ja</button>
-        <button class="yn-btn" onclick="pickYN('schmerz','nein',false)">Nein ✓</button>
+      <div class="yn-row">
+        <button class="yn-btn" id="yn-schmerz-ja">Ja</button>
+        <button class="yn-btn" id="yn-schmerz-nein">Nein ✓</button>
       </div>
       <div id="q-schmerz-text" style="display:none">
         <textarea id="ta-schmerz" rows="2" placeholder="Wo tut es weh? (z.B. linkes Knie)"></textarea>
@@ -181,9 +181,9 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <div class="card">
       <div class="sec-label">Gesundheit</div>
       <div class="q-label">Fühlst du dich krank?</div>
-      <div class="yn-row" id="q-krank-row">
-        <button class="yn-btn" onclick="pickYN('krank','ja',true)">Ja</button>
-        <button class="yn-btn" onclick="pickYN('krank','nein',false)">Nein ✓</button>
+      <div class="yn-row">
+        <button class="yn-btn" id="yn-krank-ja">Ja</button>
+        <button class="yn-btn" id="yn-krank-nein">Nein ✓</button>
       </div>
       <div id="q-krank-text" style="display:none">
         <textarea id="ta-krank" rows="2" placeholder="Welche Symptome? (z.B. Halsschmerzen)"></textarea>
@@ -192,37 +192,76 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <div class="card">
       <div class="sec-label">Einsatz</div>
       <div class="q-label">Bist du heute 100% einsatzfähig?</div>
-      <div class="ready-row" id="q-ready-row">
-        <button class="ready-btn" onclick="pickReady('ja')">✅ Ja,<br>voll dabei</button>
-        <button class="ready-btn" onclick="pickReady('teilweise')">⚠️ Teils<br>eingeschränkt</button>
-        <button class="ready-btn" onclick="pickReady('nein')">❌ Nein,<br>nicht fit</button>
+      <div class="ready-row">
+        <button class="ready-btn" id="ready-ja">✅ Ja,<br>voll dabei</button>
+        <button class="ready-btn" id="ready-teil">⚠️ Teils<br>eingeschränkt</button>
+        <button class="ready-btn" id="ready-nein">❌ Nein,<br>nicht fit</button>
       </div>
     </div>
-    <button class="submit-btn" id="submit-btn" onclick="submitForm()">Check-in abschicken</button>
+    <button class="submit-btn" id="submit-btn">Check-in abschicken</button>
     <div style="height:2rem"></div>
   </div>
 </div>
 
-<!-- SUCCESS -->
+<!-- CHECKIN SUCCESS -->
 <div class="screen" id="s-success">
   <div class="success-wrap">
     <div style="font-size:72px;margin-bottom:1rem">✅</div>
     <div style="font-size:24px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Alles klar!</div>
     <div style="font-size:16px;color:#8e8e93;margin-bottom:2.5rem" id="success-name"></div>
-    <button onclick="initCheckin()" class="role-btn role-btn-sec" style="max-width:280px">Nächster Spieler</button>
+    <button class="role-btn role-btn-sec" id="btn-next-player" style="max-width:280px">Nächster Spieler</button>
   </div>
 </div>
 
-
-<!-- PHYSIO SIGNUP -->
-<div class="screen" id="s-physio-signup">
+<!-- PHYSIO WARTELISTE -->
+<div class="screen" id="s-physio">
   <div class="ci-wrap">
-    <button class="back-btn" onclick="show('s-role')">‹ Zurück</button>
+    <button class="back-btn" id="btn-physio-back">‹ Zurück</button>
     <div class="page-title">Physio-Warteliste</div>
-    <div class="page-sub" id="physio-date-label"></div>
-    <div id="physio-signup-content"></div>
+    <div class="page-sub" id="physio-date"></div>
+    <div id="physio-status-card"></div>
+    <div class="d-sec" style="margin-top:0">Ich möchte zum Physio</div>
+    <div class="d-card-tight" id="physio-player-list"></div>
   </div>
 </div>
+
+<!-- EINHEIT BEWERTEN -->
+<div class="screen" id="s-session">
+  <div class="ci-wrap">
+    <button class="back-btn" id="btn-session-back">‹ Zurück</button>
+    <div style="font-size:13px;font-weight:700;color:#8e8e93;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px" id="session-unit-label"></div>
+    <div class="page-title">Einheit bewerten</div>
+    <div class="page-sub">Wähle deinen Namen</div>
+    <div class="player-grid" id="session-grid"></div>
+  </div>
+</div>
+
+<!-- EINHEIT FORM -->
+<div class="screen" id="s-session-form">
+  <div class="form-wrap">
+    <button class="back-btn" id="btn-session-form-back">‹ Zurück</button>
+    <div class="player-big" id="session-form-name"></div>
+    <div class="card">
+      <div class="sec-label">Belastung</div>
+      <div class="q-label">Wie anstrengend war die Einheit?</div>
+      <div class="q-sub">1 = sehr leicht · 5 = extrem hart</div>
+      <div class="stars" id="q-session-stars"></div>
+    </div>
+    <button class="submit-btn" id="session-submit-btn" style="background:#5856d6">Bewertung abschicken</button>
+    <div style="height:2rem"></div>
+  </div>
+</div>
+
+<!-- EINHEIT SUCCESS -->
+<div class="screen" id="s-session-success">
+  <div class="success-wrap">
+    <div style="font-size:72px;margin-bottom:1rem">💪</div>
+    <div style="font-size:24px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Danke!</div>
+    <div style="font-size:16px;color:#8e8e93;margin-bottom:2.5rem" id="session-success-name"></div>
+    <button class="role-btn role-btn-sec" id="btn-session-next" style="max-width:280px">Nächster Spieler</button>
+  </div>
+</div>
+
 <!-- DASHBOARD -->
 <div class="screen" id="s-dashboard">
   <div class="dash-wrap">
@@ -234,19 +273,20 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       <div style="text-align:right">
         <div class="dash-date" id="dash-date"></div>
         <div style="display:flex;gap:8px;margin-top:6px;justify-content:flex-end">
-          <button onclick="refreshDashboard()" style="background:none;border:none;color:#007aff;font-size:12px;cursor:pointer">↻ Aktualisieren</button>
-          <button onclick="show('s-role')" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer">Abmelden</button>
+          <button id="btn-refresh" style="background:none;border:none;color:#007aff;font-size:12px;cursor:pointer">↻ Aktualisieren</button>
+          <button id="btn-abmelden" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer">Abmelden</button>
         </div>
       </div>
     </div>
 
     <div class="seg">
-      <button class="on" onclick="switchTab('today')">Heute</button>
-      <button onclick="switchTab('team')">Team</button>
-      <button onclick="switchTab('players')">Spieler</button>
-      <button onclick="switchTab('kader')">Kader</button>
-      <button onclick="switchTab('einst')">Einst.</button>
-      <button onclick="switchTab('physio')">Physio</button>
+      <button class="on" data-tab="today">Heute</button>
+      <button data-tab="team">Team</button>
+      <button data-tab="players">Spieler</button>
+      <button data-tab="kader">Kader</button>
+      <button data-tab="einst">Einst.</button>
+      <button data-tab="physio">Physio</button>
+      <button data-tab="session">Einheit</button>
     </div>
 
     <!-- HEUTE -->
@@ -265,19 +305,14 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       </div>
       <div class="m4" id="today-metrics"></div>
       <div id="today-alerts"></div>
-      <div class="d-section">
-        Mannschaft
-        <button class="d-section-btn" onclick="exportCSV()">⬇ CSV Export</button>
-      </div>
+      <div class="d-sec">Mannschaft<button class="d-sec-btn" id="btn-csv">⬇ CSV Export</button></div>
       <div class="d-card-tight" id="today-list"></div>
-      <div style="margin-top:12px">
-        <button class="red-btn" onclick="resetAll()" style="margin-top:0">Alle Check-ins heute zurücksetzen</button>
-      </div>
+      <button class="red-btn" id="btn-reset-all" style="margin-top:12px">Alle Check-ins heute zurücksetzen</button>
     </div>
 
     <!-- TEAM -->
     <div class="view" id="v-team">
-      <div class="d-section">Ø Schlaf & Erholung — 7 Tage</div>
+      <div class="d-sec">Ø Schlaf & Erholung — 7 Tage</div>
       <div class="d-card">
         <div class="legend-row">
           <span class="leg"><span class="leg-sq" style="background:#34c759"></span>Schlaf</span>
@@ -285,7 +320,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
         </div>
         <div style="position:relative;height:190px"><canvas id="chart-line" role="img" aria-label="Verlauf">Verlauf.</canvas></div>
       </div>
-      <div class="d-section">Ampelstatus — 7 Tage</div>
+      <div class="d-sec">Ampelstatus — 7 Tage</div>
       <div class="d-card">
         <div class="legend-row">
           <span class="leg"><span class="leg-sq" style="background:#34c759"></span>Fit</span>
@@ -298,267 +333,280 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
 
     <!-- SPIELER -->
     <div class="view" id="v-players">
-      <div class="d-section">Alle Spieler</div>
+      <div class="d-sec">Alle Spieler</div>
       <div class="d-card-tight" id="players-list"></div>
     </div>
 
     <!-- DETAIL -->
     <div class="view" id="v-detail">
-      <button class="back-btn" style="padding:1rem 0 0.5rem" onclick="switchTab('players')">‹ Spieler</button>
+      <button class="back-btn" id="btn-detail-back" style="padding:1rem 0 0.5rem">‹ Spieler</button>
       <div id="detail-content"></div>
     </div>
 
     <!-- KADER -->
     <div class="view" id="v-kader">
-      <div class="d-section">Spieler hinzufügen</div>
+      <div class="d-sec">Spieler hinzufügen</div>
       <div class="d-card">
         <input class="add-input" type="text" id="new-player-input" placeholder="Name (z.B. Müller, Thomas)">
-        <button class="submit-btn" onclick="addPlayer()">Spieler hinzufügen</button>
+        <button class="submit-btn" id="btn-add-player">Spieler hinzufügen</button>
       </div>
-      <div class="d-section">Kader verwalten</div>
+      <div class="d-sec">Kader verwalten</div>
       <div class="d-card-tight" id="kader-list"></div>
     </div>
 
     <!-- EINSTELLUNGEN -->
     <div class="view" id="v-einst">
-      <div class="d-section">Check-in Frist</div>
+      <div class="d-sec">Check-in Frist</div>
       <div class="d-card">
-        <div style="font-size:14px;color:#8e8e93;margin-bottom:12px">Bis wann können Spieler heute einchecken?</div>
+        <div style="font-size:14px;color:#8e8e93;margin-bottom:12px">Bis wann können Spieler einchecken?</div>
         <div style="display:flex;align-items:center;gap:12px">
-          <input type="time" id="deadline-input" value="10:00" style="padding:10px 14px;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:16px;color:#1c1c1e;font-family:inherit;flex:1">
-          <button onclick="saveDeadline()" style="padding:10px 18px;border-radius:12px;border:none;background:#1c1c1e;color:#fff;font-size:14px;font-weight:600;cursor:pointer">Speichern</button>
+          <input type="time" id="deadline-input" style="padding:10px 14px;border-radius:12px;border:1.5px solid #e5e5ea;background:#f9f9f9;font-size:16px;color:#1c1c1e;font-family:inherit;flex:1">
+          <button id="btn-save-deadline" style="padding:10px 18px;border-radius:12px;border:none;background:#1c1c1e;color:#fff;font-size:14px;font-weight:600;cursor:pointer">Speichern</button>
         </div>
         <div style="font-size:12px;color:#8e8e93;margin-top:8px">Leer lassen = kein Zeitlimit</div>
-        <div id="deadline-saved" style="font-size:13px;color:#34c759;margin-top:6px;min-height:18px"></div>
+        <div id="deadline-msg" style="font-size:13px;color:#34c759;margin-top:6px;min-height:18px"></div>
       </div>
-      <div class="d-section">Passwort ändern</div>
+      <div class="d-sec">Passwort ändern</div>
       <div class="d-card">
-        <input class="add-input" type="password" id="new-pw-input" placeholder="Neues Passwort" style="margin-bottom:8px">
-        <input class="add-input" type="password" id="new-pw-confirm" placeholder="Passwort bestätigen">
-        <button class="submit-btn" onclick="changePW()">Passwort ändern</button>
-        <div id="pw-change-msg" style="font-size:13px;margin-top:8px;min-height:18px;text-align:center"></div>
+        <input class="add-input" type="password" id="new-pw" placeholder="Neues Passwort" style="margin-bottom:8px">
+        <input class="add-input" type="password" id="new-pw2" placeholder="Passwort bestätigen">
+        <button class="submit-btn" id="btn-change-pw">Passwort ändern</button>
+        <div id="pw-msg" style="font-size:13px;margin-top:8px;min-height:18px;text-align:center"></div>
       </div>
     </div>
-  
-    <!-- PHYSIO -->
+
+    <!-- PHYSIO DASHBOARD -->
     <div class="view" id="v-physio">
-      <div class="d-section">
-        Physio-Warteliste — heute
-        <button class="d-section-btn" onclick="clearPhysio()">Alle abhaken</button>
-      </div>
-      <div class="d-card-tight" id="physio-list"></div>
-      <div style="margin-top:10px;font-size:13px;color:#8e8e93;text-align:center" id="physio-empty">Noch niemand auf der Liste</div>
+      <div class="d-sec">Physio-Warteliste — heute<button class="d-sec-btn" id="btn-clear-physio">Alle löschen</button></div>
+      <div class="d-card-tight" id="dash-physio-list"></div>
+      <div id="dash-physio-empty" style="text-align:center;font-size:13px;color:#8e8e93;margin-top:8px">Noch niemand auf der Liste</div>
     </div>
-</div>
+
+    <!-- EINHEIT DASHBOARD -->
+    <div class="view" id="v-session">
+      <div class="d-sec">Einheitsbewertung<button class="d-sec-btn" id="btn-toggle-session">Öffnen / Schließen</button></div>
+      <div class="d-card">
+        <div style="font-size:14px;color:#8e8e93;margin-bottom:12px">Spieler können bewerten sobald du freigibst.</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div id="session-dot" style="width:10px;height:10px;border-radius:50%;background:#c7c7cc;flex-shrink:0"></div>
+          <div id="session-status-txt" style="font-size:15px;font-weight:500;color:#1c1c1e">Geschlossen</div>
+        </div>
+        <input class="add-input" type="text" id="session-name-input" placeholder="Name der Einheit (z.B. Vormittagstraining)" style="margin-bottom:8px">
+        <button class="submit-btn" id="btn-open-session" style="background:#5856d6">Bewertung freigeben</button>
+      </div>
+      <div class="d-sec">Ergebnisse heute</div>
+      <div class="d-card-tight" id="session-results"></div>
+      <div id="session-no-results" style="text-align:center;font-size:13px;color:#8e8e93;margin-top:8px">Noch keine Bewertungen</div>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const SUPABASE_URL='https://upfeswxpeemjkidaamym.supabase.co';
-const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwZmVzd3hwZWVtamtpZGFhbXltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMDY1NjIsImV4cCI6MjA5NDg4MjU2Mn0.ys3BVPw8WZ0kyDcMsPTFTAHLhULWLCOOztIjl1idY64';
-const DEFAULT_PLAYERS=["Albrecht, Tristan","Armbrecht, Jonah","Brinkhoff, Elia","Bunzel, Mattis","Britz, Emil","Brunner, Cornelius","Dahm, Fynn-Philip","Hauck, Constantin","Fischbach, Moritz","Fürnthaler, Alexander","Jagd, Henrik","Koppenhöfer, Mika","Katterbath, Mattis","Kosantzky, Max","Mehling, Paul","Polonius, Constantin","Pörksen, Lasse","Richter, Mats","Rödding, Vincent","Schaarschmidt, Henri","Schöder, Noel","Schulz, Conrad","Schymik, Joshua","Sroubek, Moritz","Stybek, Tim","Tietz, Hannes","von Bernstoff, Leonhard","von Schwarze, Carl","Zeunem, Louis"];
+const SURL='https://upfeswxpeemjkidaamym.supabase.co';
+const SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwZmVzd3hwZWVtamtpZGFhbXltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMDY1NjIsImV4cCI6MjA5NDg4MjU2Mn0.ys3BVPw8WZ0kyDcMsPTFTAHLhULWLCOOztIjl1idY64';
+const DEF_PLAYERS=["Albrecht, Tristan","Armbrecht, Jonah","Brinkhoff, Elia","Bunzel, Mattis","Britz, Emil","Brunner, Cornelius","Dahm, Fynn-Philip","Hauck, Constantin","Fischbach, Moritz","Fürnthaler, Alexander","Jagd, Henrik","Koppenhöfer, Mika","Katterbath, Mattis","Kosantzky, Max","Mehling, Paul","Polonius, Constantin","Pörksen, Lasse","Richter, Mats","Rödding, Vincent","Schaarschmidt, Henri","Schöder, Noel","Schulz, Conrad","Schymik, Joshua","Sroubek, Moritz","Stybek, Tim","Tietz, Hannes","von Bernstoff, Leonhard","von Schwarze, Carl","Zeunem, Louis"];
 
-let PLAYERS=[],TRAINER_PW='grafmarv';
+let PLAYERS=[],PW='grafmarv',DEADLINE='';
 let currentPlayer=null,formState={},todayData={},historyData=[],lineChart=null,barChart=null;
-let DEADLINE='10:00';
 
-function loadSettings(){
-  try{
-    const p=localStorage.getItem('dhb_pw');if(p)TRAINER_PW=p;
-    const d=localStorage.getItem('dhb_deadline');if(d!==null)DEADLINE=d;
-    const s=localStorage.getItem('dhb_players');if(s)PLAYERS=JSON.parse(s);else{PLAYERS=[...DEFAULT_PLAYERS];savePlayers();}
-  }catch(e){PLAYERS=[...DEFAULT_PLAYERS];}
-}
-function savePlayers(){try{localStorage.setItem('dhb_players',JSON.stringify(PLAYERS));}catch(e){}}
-
+// --- UTILS ---
+const $ = id => document.getElementById(id);
 function getToday(){return new Date().toISOString().slice(0,10);}
 function getDates(n){const d=[];for(let i=n-1;i>=0;i--){const dt=new Date();dt.setDate(dt.getDate()-i);d.push(dt.toISOString().slice(0,10));}return d;}
-function initials(n){const p=n.split(',');return(p[1]?.trim()[0]||'')+(p[0]?.[0]||'');}
-function getStatus(s){if(!s)return'x';if(s.krank==='ja'||s.ready==='nein')return'r';const a=(s.schlaf+s.erholung)/2;if(s.schmerz==='ja'||s.ready==='teilweise'||a<3)return'a';return'g';}
+function ini(n){const p=n.split(',');return(p[1]?.trim()[0]||'')+(p[0]?.[0]||'');}
+function status(s){if(!s)return'x';if(s.krank==='ja'||s.ready==='nein')return'r';const a=(s.schlaf+s.erholung)/2;if(s.schmerz==='ja'||s.ready==='teilweise'||a<3)return'a';return'g';}
 const avCls={g:'av av-g',a:'av av-a',r:'av av-r',x:'av av-x'};
-const pillCls={g:'pill pill-g',a:'pill pill-a',r:'pill pill-r',x:'pill pill-x'};
-const pillTxt={g:'Fit',a:'Beachten',r:'Eingeschränkt',x:'Ausstehend'};
-const barCol={g:'#34c759',a:'#ff9500',r:'#ff3b30'};
+const pCls={g:'pill pill-g',a:'pill pill-a',r:'pill pill-r',x:'pill pill-x'};
+const pTxt={g:'Fit',a:'Beachten',r:'Eingeschränkt',x:'Ausstehend'};
+const bCol={g:'#34c759',a:'#ff9500',r:'#ff3b30'};
+function deadlinePassed(){if(!DEADLINE)return false;const n=new Date();const[h,m]=DEADLINE.split(':').map(Number);return n.getHours()>h||(n.getHours()===h&&n.getMinutes()>=m);}
 
-function isDeadlinePassed(){
-  if(!DEADLINE)return false;
-  const now=new Date();
-  const[h,m]=DEADLINE.split(':').map(Number);
-  return now.getHours()>h||(now.getHours()===h&&now.getMinutes()>=m);
+// --- STORAGE ---
+function loadSettings(){
+  try{const p=localStorage.getItem('dhb_pw');if(p)PW=p;const d=localStorage.getItem('dhb_dl');if(d!==null)DEADLINE=d;const s=localStorage.getItem('dhb_players');if(s)PLAYERS=JSON.parse(s);else{PLAYERS=[...DEF_PLAYERS];savePlayers();}}catch(e){PLAYERS=[...DEF_PLAYERS];}
 }
+function savePlayers(){try{localStorage.setItem('dhb_players',JSON.stringify(PLAYERS));}catch(e){}}
+function physioKey(){return'dhb_physio_'+getToday();}
+function loadPhysio(){try{return JSON.parse(localStorage.getItem(physioKey())||'[]');}catch(e){return[];}}
+function savePhysio(l){localStorage.setItem(physioKey(),JSON.stringify(l));}
+function sessionKey(){return'dhb_session_'+getToday();}
+function loadSession(){try{return JSON.parse(localStorage.getItem(sessionKey())||'{"open":false,"name":"","results":[]}');}catch(e){return{open:false,name:'',results:[]};}}
+function saveSession(d){localStorage.setItem(sessionKey(),JSON.stringify(d));}
 
+// --- API ---
 async function api(path,method='GET',body=null){
-  const opts={method,headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'}};
+  const opts={method,headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=minimal'}};
   if(body)opts.body=JSON.stringify(body);
-  const r=await fetch(SUPABASE_URL+'/rest/v1/'+path,opts);
-  if(method==='GET')return r.json();
-  return r;
+  const r=await fetch(SURL+'/rest/v1/'+path,opts);
+  if(method==='GET')return r.json();return r;
 }
 async function loadToday(){const rows=await api('checkins?datum=eq.'+getToday()+'&select=*');todayData={};rows.forEach(r=>todayData[r.spieler]=r);}
-async function loadHistory(){const dates=getDates(7);historyData=await api('checkins?datum=gte.'+dates[0]+'&select=*&order=datum.asc');}
+async function loadHistory(){const d=getDates(7);historyData=await api('checkins?datum=gte.'+d[0]+'&select=*&order=datum.asc');}
 
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+// --- NAVIGATION ---
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0);}
 
-function checkPW(){
-  const val=document.getElementById('pw-input').value;
-  if(val===TRAINER_PW){document.getElementById('pw-error').textContent='';document.getElementById('pw-input').value='';initDashboard();}
-  else{document.getElementById('pw-error').textContent='Falsches Passwort';}
+function switchTab(t){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
+  $('v-'+t).classList.add('on');
+  document.querySelector('.seg button[data-tab="'+t+'"]').classList.add('on');
+  if(t==='team')renderCharts();
+  if(t==='players')renderPlayers();
+  if(t==='kader')renderKader();
+  if(t==='physio')renderPhysioDash();
+  if(t==='session')renderSessionDash();
 }
 
+// --- CHECKIN FLOW ---
 async function initCheckin(){
   show('s-checkin');
-  document.getElementById('player-grid').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
+  $('player-grid').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
   await loadToday();
-  const banner=document.getElementById('deadline-banner');
+  const banner=$('deadline-banner');
   if(DEADLINE){
-    if(isDeadlinePassed()){
+    if(deadlinePassed()){
       banner.innerHTML='';
-      document.getElementById('player-grid').innerHTML=`<div class="closed-screen" style="grid-column:1/-1">
-        <div style="font-size:48px;margin-bottom:1rem">🔒</div>
-        <div style="font-size:18px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Check-in geschlossen</div>
-        <div style="font-size:14px;color:#8e8e93">Die Frist (${DEADLINE} Uhr) ist abgelaufen.</div>
-      </div>`;
+      $('player-grid').innerHTML=`<div class="closed-wrap" style="grid-column:1/-1"><div style="font-size:48px;margin-bottom:1rem">🔒</div><div style="font-size:18px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Check-in geschlossen</div><div style="font-size:14px;color:#8e8e93">Frist (${DEADLINE} Uhr) abgelaufen</div></div>`;
       return;
-    } else {
-      banner.innerHTML=`<div class="deadline-banner">Check-in möglich bis ${DEADLINE} Uhr</div>`;
     }
+    banner.innerHTML=`<div class="deadline-banner">Check-in möglich bis ${DEADLINE} Uhr</div>`;
   } else { banner.innerHTML=''; }
   renderPlayerGrid();
 }
 
 function renderPlayerGrid(){
-  document.getElementById('player-grid').innerHTML=PLAYERS.map(p=>{
-    const s=todayData[p];let dot='dot-x';
+  $('player-grid').innerHTML='';
+  PLAYERS.forEach(p=>{
+    const s=todayData[p];
+    let dot='dot-x';
     if(s){const avg=(s.schlaf+s.erholung)/2;dot=s.krank==='ja'||s.ready==='nein'?'dot-r':avg>=4&&s.ready==='ja'?'dot-g':'dot-a';}
-    return`<button class="p-btn${s?' done':''}" ${s?'':'onclick="selectPlayer(\''+p+'\')"'}>
-      <span class="dot ${dot}"></span><span style="line-height:1.3">${p}${s?' ✓':''}</span>
-    </button>`;
-  }).join('');
+    const btn=document.createElement('button');
+    btn.className='p-btn'+(s?' done':'');
+    btn.innerHTML=`<span class="dot ${dot}"></span><span style="line-height:1.3">${p}${s?' ✓':''}</span>`;
+    if(!s) btn.addEventListener('click',()=>selectPlayer(p));
+    $('player-grid').appendChild(btn);
+  });
 }
 
 function selectPlayer(name){
-  currentPlayer=name;formState={schlaf:0,erholung:0,schmerz:null,krank:null,ready:null};
-  document.getElementById('form-name').textContent=name;
+  currentPlayer=name;
+  formState={schlaf:0,erholung:0,schmerz:null,krank:null,ready:null};
+  $('form-name').textContent=name;
   buildStars('q-schlaf','schlaf');buildStars('q-erholung','erholung');
   ['schmerz','krank'].forEach(k=>{
-    document.getElementById('q-'+k+'-row').querySelectorAll('.yn-btn').forEach(b=>b.className='yn-btn');
-    document.getElementById('q-'+k+'-text').style.display='none';
+    $('yn-'+k+'-ja').className='yn-btn';$('yn-'+k+'-nein').className='yn-btn';
+    $('q-'+k+'-text').style.display='none';
   });
-  document.getElementById('ta-schmerz').value='';document.getElementById('ta-krank').value='';
-  document.getElementById('q-ready-row').querySelectorAll('.ready-btn').forEach(b=>b.className='ready-btn');
-  const btn=document.getElementById('submit-btn');btn.disabled=false;btn.textContent='Check-in abschicken';
+  $('ta-schmerz').value='';$('ta-krank').value='';
+  ['ready-ja','ready-teil','ready-nein'].forEach(id=>$(id).className='ready-btn');
+  $('submit-btn').disabled=false;$('submit-btn').textContent='Check-in abschicken';
   show('s-form');
 }
 
 function buildStars(cid,key){
   const em=['😴','😕','😐','🙂','😄'];
-  document.getElementById(cid).innerHTML=[1,2,3,4,5].map(i=>
-    `<button class="star-btn" id="${cid}-${i}" onclick="pickStar('${key}',${i},'${cid}')">
-      <span>${em[i-1]}</span><span class="num">${i}</span>
-    </button>`).join('');
+  $(cid).innerHTML='';
+  [1,2,3,4,5].forEach(i=>{
+    const b=document.createElement('button');
+    b.className='star-btn';b.id=cid+'-'+i;
+    b.innerHTML=`<span>${em[i-1]}</span><span class="num">${i}</span>`;
+    b.addEventListener('click',()=>{formState[key]=i;for(let j=1;j<=5;j++)$(cid+'-'+j).classList.toggle('sel',j<=i);});
+    $(cid).appendChild(b);
+  });
 }
-function pickStar(key,val,cid){formState[key]=val;for(let i=1;i<=5;i++)document.getElementById(cid+'-'+i).classList.toggle('sel',i<=val);}
-function pickYN(key,val,showText){
+
+function pickYN(key,val,show_text){
   formState[key]=val;
-  const btns=document.getElementById('q-'+key+'-row').querySelectorAll('.yn-btn');
-  btns[0].className='yn-btn'+(val==='ja'?' sel-j':'');
-  btns[1].className='yn-btn'+(val==='nein'?' sel-n':'');
-  document.getElementById('q-'+key+'-text').style.display=showText?'block':'none';
+  $('yn-'+key+'-ja').className='yn-btn'+(val==='ja'?' sel-j':'');
+  $('yn-'+key+'-nein').className='yn-btn'+(val==='nein'?' sel-n':'');
+  $('q-'+key+'-text').style.display=show_text?'block':'none';
 }
+
 function pickReady(val){
   formState.ready=val;
-  const btns=document.getElementById('q-ready-row').querySelectorAll('.ready-btn');
-  btns[0].className='ready-btn'+(val==='ja'?' sel-100':'');
-  btns[1].className='ready-btn'+(val==='teilweise'?' sel-part':'');
-  btns[2].className='ready-btn'+(val==='nein'?' sel-no':'');
+  $('ready-ja').className='ready-btn'+(val==='ja'?' sel-100':'');
+  $('ready-teil').className='ready-btn'+(val==='teilweise'?' sel-part':'');
+  $('ready-nein').className='ready-btn'+(val==='nein'?' sel-no':'');
 }
+
 async function submitForm(){
   if(!formState.schlaf||!formState.erholung||!formState.schmerz||!formState.krank||!formState.ready){alert('Bitte alle Fragen beantworten.');return;}
-  const btn=document.getElementById('submit-btn');btn.disabled=true;btn.textContent='Wird gespeichert…';
-  await api('checkins','POST',{datum:getToday(),spieler:currentPlayer,schlaf:formState.schlaf,erholung:formState.erholung,schmerz:formState.schmerz,schmerz_text:document.getElementById('ta-schmerz').value,krank:formState.krank,krank_text:document.getElementById('ta-krank').value,ready:formState.ready,uhrzeit:new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})});
-  document.getElementById('success-name').textContent=currentPlayer+' ist eingecheckt!';
+  $('submit-btn').disabled=true;$('submit-btn').textContent='Wird gespeichert…';
+  await api('checkins','POST',{datum:getToday(),spieler:currentPlayer,schlaf:formState.schlaf,erholung:formState.erholung,schmerz:formState.schmerz,schmerz_text:$('ta-schmerz').value,krank:formState.krank,krank_text:$('ta-krank').value,ready:formState.ready,uhrzeit:new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})});
+  $('success-name').textContent=currentPlayer+' ist eingecheckt!';
   show('s-success');
 }
 
+// --- DASHBOARD ---
 async function initDashboard(){
   show('s-dashboard');
-  document.getElementById('today-list').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
-  document.getElementById('deadline-input').value=DEADLINE||'';
+  $('today-list').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
+  $('deadline-input').value=DEADLINE||'';
   await Promise.all([loadToday(),loadHistory()]);
   renderToday();
 }
 
 async function refreshDashboard(){
-  document.getElementById('today-list').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
+  $('today-list').innerHTML='<div class="loading"><div class="spinner"></div><br>Laden…</div>';
   await Promise.all([loadToday(),loadHistory()]);
   renderToday();
   const cur=document.querySelector('.view.on');
-  if(cur&&cur.id==='v-team')renderCharts();
-  if(cur&&cur.id==='v-players')renderPlayers();
+  if(cur){
+    if(cur.id==='v-team')renderCharts();
+    if(cur.id==='v-players')renderPlayers();
+    if(cur.id==='v-physio')renderPhysioDash();
+    if(cur.id==='v-session')renderSessionDash();
+  }
 }
 
 function renderToday(){
   const now=new Date();
-  document.getElementById('dash-date').innerHTML=now.toLocaleDateString('de-DE',{weekday:'long'})+'<br>'+now.toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'});
+  $('dash-date').innerHTML=now.toLocaleDateString('de-DE',{weekday:'long'})+'<br>'+now.toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'});
   const subs=Object.values(todayData);
   const done=subs.length,total=PLAYERS.length;
-  const rote=subs.filter(s=>getStatus(s)==='r').length;
+  const rote=subs.filter(s=>status(s)==='r').length;
   const avgS=done?(subs.reduce((a,b)=>a+b.schlaf,0)/done).toFixed(1):'—';
   const avgE=done?(subs.reduce((a,b)=>a+b.erholung,0)/done).toFixed(1):'—';
   const pct=total>0?Math.round(done/total*100):0;
   const circ=351.9;
-  document.getElementById('ring-num').textContent=done;
-  document.getElementById('ring-total').textContent='von '+total;
-  document.getElementById('ring-prog').style.strokeDashoffset=circ-(circ*pct/100);
-  document.getElementById('ring-prog').style.stroke=rote>0?'#ff9500':'#34c759';
-  document.getElementById('today-metrics').innerHTML=`
+  $('ring-num').textContent=done;$('ring-total').textContent='von '+total;
+  $('ring-prog').style.strokeDashoffset=circ-(circ*pct/100);
+  $('ring-prog').style.stroke=rote>0?'#ff9500':'#34c759';
+  $('today-metrics').innerHTML=`
     <div class="met ${rote>0?'met-red':''}"><div class="met-val">${rote}</div><div class="met-lbl">Eingeschränkt</div></div>
     <div class="met"><div class="met-val">${pct}<span>%</span></div><div class="met-lbl">Eingecheckt</div></div>
     <div class="met"><div class="met-val">${avgS}</div><div class="met-lbl">Ø Schlaf</div></div>
     <div class="met"><div class="met-val">${avgE}</div><div class="met-lbl">Ø Erholung</div></div>`;
+
   const alerts=PLAYERS.filter(p=>{const s=todayData[p];return s&&(s.krank==='ja'||s.ready==='nein'||s.schmerz==='ja');});
-  document.getElementById('today-alerts').innerHTML=alerts.length?`<div class="alert-card">
-    <div style="font-size:12px;font-weight:700;color:#c0392b;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px">Aufmerksamkeit</div>
-    ${alerts.map(p=>{const s=todayData[p];const f=[];
+  if(alerts.length){
+    let html='<div class="alert-card"><div style="font-size:12px;font-weight:700;color:#c0392b;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px">Aufmerksamkeit</div>';
+    alerts.forEach(p=>{
+      const s=todayData[p];const f=[];
       if(s.krank==='ja')f.push('Krank'+(s.krank_text?' ('+s.krank_text+')':''));
       if(s.schmerz==='ja')f.push('Schmerzen'+(s.schmerz_text?' ('+s.schmerz_text+')':''));
       if(s.ready==='nein')f.push('Nicht einsatzfähig');
       if(s.ready==='teilweise')f.push('Eingeschränkt');
-      return`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid rgba(192,57,43,0.12);cursor:pointer" onclick="showDetail('${p}')">
-        <div class="av av-r">${initials(p)}</div>
-        <div style="flex:1"><div style="font-size:14px;font-weight:500;color:#1c1c1e">${p}</div>
-        <div style="font-size:12px;color:#c0392b;margin-top:1px">${f.join(' · ')}</div></div>
-        <span class="chev">›</span></div>`;}).join('')}
-  </div>`:'';
-  document.getElementById('today-list').innerHTML=PLAYERS.map(p=>{
-    const s=todayData[p];const st=getStatus(s);
+      html+=`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid rgba(192,57,43,0.12)"><div class="av av-r">${ini(p)}</div><div style="flex:1"><div style="font-size:14px;font-weight:500;color:#1c1c1e">${p}</div><div style="font-size:12px;color:#c0392b;margin-top:1px">${f.join(' · ')}</div></div></div>`;
+    });
+    $('today-alerts').innerHTML=html+'</div>';
+  } else {$('today-alerts').innerHTML='';}
+
+  $('today-list').innerHTML='';
+  PLAYERS.forEach(p=>{
+    const s=todayData[p];const st=status(s);
     const avg=s?((s.schlaf+s.erholung)/2):null;
     const barW=avg?Math.round(avg/5*100):0;
-    return`<div class="prow" ${s?'onclick="showDetail(\''+p+'\')"':''}>
-      <div class="${avCls[st]}">${initials(p)}</div>
-      <div style="flex:1">
-        <div class="pname">${p}</div>
-        ${s?`<div style="display:flex;align-items:center;margin-top:4px">
-          <div class="bar-track"><div class="bar-fill" style="width:${barW}%;background:${barCol[st]||'#c7c7cc'}"></div></div>
-          <span style="font-size:11px;color:#8e8e93;min-width:28px">${avg.toFixed(1)}/5</span>
-        </div>`:'<div class="psub">Ausstehend</div>'}
-      </div>
-      <span class="${pillCls[st]}">${pillTxt[st]}</span>
-      ${s?'<span class="chev">›</span>':''}
-    </div>`;
-  }).join('');
-}
-
-function switchTab(t){
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
-  document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
-  document.getElementById('v-'+t).classList.add('on');
-  const idx={today:0,team:1,players:2,kader:3,einst:4};
-  if(idx[t]!==undefined)document.querySelectorAll('.seg button')[idx[t]]?.classList.add('on');
-  if(t==='team')renderCharts();
-  if(t==='players')renderPlayers();
-  if(t==='kader')renderKader();
-  if(t==='physio')renderPhysioDashboard();
+    const row=document.createElement('div');
+    row.className='prow'+(s?' clickable':'');
+    row.innerHTML=`<div class="${avCls[st]}">${ini(p)}</div>
+      <div style="flex:1"><div class="pname">${p}</div>${s?`<div style="display:flex;align-items:center;margin-top:4px"><div class="bar-track"><div class="bar-fill" style="width:${barW}%;background:${bCol[st]||'#c7c7cc'}"></div></div><span style="font-size:11px;color:#8e8e93;min-width:28px">${avg.toFixed(1)}/5</span></div>`:'<div class="psub">Ausstehend</div>'}</div>
+      <span class="${pCls[st]}">${pTxt[st]}</span>${s?'<span class="chev">›</span>':''}`;
+    if(s) row.addEventListener('click',()=>showDetail(p));
+    $('today-list').appendChild(row);
+  });
 }
 
 function renderCharts(){
@@ -567,17 +615,17 @@ function renderCharts(){
   const byDate={};historyData.forEach(r=>{if(!byDate[r.datum])byDate[r.datum]=[];byDate[r.datum].push(r);});
   const avgS=dates.map(d=>{const r=byDate[d]||[];return r.length?parseFloat((r.reduce((a,b)=>a+b.schlaf,0)/r.length).toFixed(1)):null;});
   const avgE=dates.map(d=>{const r=byDate[d]||[];return r.length?parseFloat((r.reduce((a,b)=>a+b.erholung,0)/r.length).toFixed(1)):null;});
-  const gruen=dates.map(d=>(byDate[d]||[]).filter(s=>getStatus(s)==='g').length);
-  const gelb=dates.map(d=>(byDate[d]||[]).filter(s=>getStatus(s)==='a').length);
-  const rot=dates.map(d=>(byDate[d]||[]).filter(s=>getStatus(s)==='r').length);
-  const tf={size:11,family:'-apple-system,BlinkMacSystemFont,sans-serif'};const gc='rgba(0,0,0,0.06)';
+  const gruen=dates.map(d=>(byDate[d]||[]).filter(s=>status(s)==='g').length);
+  const gelb=dates.map(d=>(byDate[d]||[]).filter(s=>status(s)==='a').length);
+  const rot=dates.map(d=>(byDate[d]||[]).filter(s=>status(s)==='r').length);
+  const tf={size:11,family:'-apple-system,sans-serif'};const gc='rgba(0,0,0,0.06)';
   if(lineChart)lineChart.destroy();
-  lineChart=new Chart(document.getElementById('chart-line'),{type:'line',data:{labels,datasets:[
+  lineChart=new Chart($('chart-line'),{type:'line',data:{labels,datasets:[
     {label:'Schlaf',data:avgS,borderColor:'#34c759',backgroundColor:'rgba(52,199,89,0.08)',tension:0.4,pointRadius:3,pointBackgroundColor:'#34c759',fill:true,borderWidth:2},
     {label:'Erholung',data:avgE,borderColor:'#007aff',backgroundColor:'rgba(0,122,255,0.05)',tension:0.4,pointRadius:3,pointBackgroundColor:'#007aff',borderDash:[5,3],fill:true,borderWidth:2}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:1,max:5,ticks:{stepSize:1,font:tf},grid:{color:gc}},x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:0,font:tf}}}}});
   if(barChart)barChart.destroy();
-  barChart=new Chart(document.getElementById('chart-bar'),{type:'bar',data:{labels,datasets:[
+  barChart=new Chart($('chart-bar'),{type:'bar',data:{labels,datasets:[
     {label:'Fit',data:gruen,backgroundColor:'#34c759',borderRadius:4},
     {label:'Beachten',data:gelb,backgroundColor:'#ff9500',borderRadius:4},
     {label:'Eingeschränkt',data:rot,backgroundColor:'#ff3b30',borderRadius:4}
@@ -585,122 +633,52 @@ function renderCharts(){
 }
 
 function renderPlayers(){
-  document.getElementById('players-list').innerHTML=PLAYERS.map(p=>{
-    const s=todayData[p];const st=getStatus(s);
+  $('players-list').innerHTML='';
+  PLAYERS.forEach(p=>{
+    const s=todayData[p];const st=status(s);
     const avg=s?((s.schlaf+s.erholung)/2):null;
-    return`<div class="prow" onclick="showDetail('${p}')">
-      <div class="${avCls[st]}">${initials(p)}</div>
-      <div style="flex:1">
-        <div class="pname">${p}</div>
-        ${s?`<div class="psub">${s.uhrzeit} · Ø ${avg.toFixed(1)}/5</div>`:'<div class="psub">Noch nicht eingecheckt</div>'}
-      </div>
-      <span class="${pillCls[st]}">${pillTxt[st]}</span>
-      <span class="chev">›</span>
-    </div>`;
-  }).join('');
+    const row=document.createElement('div');
+    row.className='prow clickable';
+    row.innerHTML=`<div class="${avCls[st]}">${ini(p)}</div><div style="flex:1"><div class="pname">${p}</div>${s?`<div class="psub">${s.uhrzeit} · Ø ${avg.toFixed(1)}/5</div>`:'<div class="psub">Noch nicht eingecheckt</div>'}</div><span class="${pCls[st]}">${pTxt[st]}</span><span class="chev">›</span>`;
+    row.addEventListener('click',()=>showDetail(p));
+    $('players-list').appendChild(row);
+  });
 }
 
 function renderKader(){
-  document.getElementById('kader-list').innerHTML=PLAYERS.map((p,i)=>
-    `<div class="prow" style="cursor:default">
-      <div class="av av-x">${initials(p)}</div>
-      <div class="pname" style="flex:1">${p}</div>
-      <button class="del-btn" onclick="removePlayer(${i})">×</button>
-    </div>`
-  ).join('');
-}
-
-function addPlayer(){
-  const input=document.getElementById('new-player-input');
-  const name=input.value.trim();
-  if(!name){alert('Bitte einen Namen eingeben.');return;}
-  if(PLAYERS.includes(name)){alert('Spieler bereits im Kader.');return;}
-  PLAYERS.push(name);PLAYERS.sort();savePlayers();input.value='';renderKader();
-}
-
-function removePlayer(idx){
-  const name=PLAYERS[idx];
-  if(!confirm('Spieler "'+name+'" entfernen?'))return;
-  PLAYERS.splice(idx,1);savePlayers();renderKader();
-}
-
-function saveDeadline(){
-  DEADLINE=document.getElementById('deadline-input').value;
-  localStorage.setItem('dhb_deadline',DEADLINE);
-  const msg=document.getElementById('deadline-saved');
-  msg.textContent=DEADLINE?'Gespeichert — Frist: '+DEADLINE+' Uhr':'Gespeichert — kein Zeitlimit';
-  setTimeout(()=>msg.textContent='',3000);
-}
-
-function changePW(){
-  const a=document.getElementById('new-pw-input').value;
-  const b=document.getElementById('new-pw-confirm').value;
-  const msg=document.getElementById('pw-change-msg');
-  if(!a){msg.style.color='#ff3b30';msg.textContent='Bitte Passwort eingeben.';return;}
-  if(a!==b){msg.style.color='#ff3b30';msg.textContent='Passwörter stimmen nicht überein.';return;}
-  TRAINER_PW=a;localStorage.setItem('dhb_pw',a);
-  document.getElementById('new-pw-input').value='';
-  document.getElementById('new-pw-confirm').value='';
-  msg.style.color='#34c759';msg.textContent='Passwort geändert!';
-  setTimeout(()=>msg.textContent='',3000);
-}
-
-async function resetCheckin(name){
-  if(!confirm('Check-in von "'+name+'" zurücksetzen?'))return;
-  const rows=await api('checkins?datum=eq.'+getToday()+'&spieler=eq.'+encodeURIComponent(name)+'&select=id');
-  if(rows.length){await api('checkins?id=eq.'+rows[0].id,'DELETE');delete todayData[name];renderToday();switchTab('players');}
-}
-
-async function resetAll(){
-  if(!confirm('Alle '+Object.keys(todayData).length+' Check-ins von heute zurücksetzen?'))return;
-  const rows=await api('checkins?datum=eq.'+getToday()+'&select=id');
-  await Promise.all(rows.map(r=>api('checkins?id=eq.'+r.id,'DELETE')));
-  todayData={};renderToday();
-}
-
-function exportCSV(){
-  const rows=[['Name','Schlaf','Erholung','Schmerzen','Schmerzinfo','Krank','Krankinfo','Einsatzfähig','Uhrzeit','Status']];
-  PLAYERS.forEach(p=>{
-    const s=todayData[p];
-    if(s){
-      rows.push([p,s.schlaf,s.erholung,s.schmerz,s.schmerz_text||'',s.krank,s.krank_text||'',s.ready,s.uhrzeit,pillTxt[getStatus(s)]]);
-    }
+  $('kader-list').innerHTML='';
+  PLAYERS.forEach((p,i)=>{
+    const row=document.createElement('div');
+    row.className='prow';
+    row.innerHTML=`<div class="av av-x">${ini(p)}</div><div class="pname" style="flex:1">${p}</div>`;
+    const del=document.createElement('button');
+    del.className='del-btn';del.textContent='×';
+    del.addEventListener('click',()=>{if(confirm('Spieler "'+p+'" entfernen?')){PLAYERS.splice(i,1);savePlayers();renderKader();}});
+    row.appendChild(del);
+    $('kader-list').appendChild(row);
   });
-  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
-  const a=document.createElement('a');
-  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
-  a.download='DHB-MU16-'+getToday()+'.csv';
-  a.click();
 }
 
 function showDetail(name){
-  const s=todayData[name];const st=getStatus(s)||'x';
+  const s=todayData[name];const st=status(s)||'x';
   const em=['😴','😕','😐','🙂','😄'];
   const readyMap={ja:'Ja, voll dabei',teilweise:'Teilweise eingeschränkt',nein:'Nicht fit'};
   const ph=historyData.filter(r=>r.spieler===name);
   const note=localStorage.getItem('dhb_note_'+name)||'';
-  const histHtml=ph.length?ph.map(d=>{
+  let histHtml=ph.length?ph.map(d=>{
     const avg=((d.schlaf+d.erholung)/2).toFixed(1);
     const label=new Date(d.datum+'T12:00:00').toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'short'});
-    const col=getStatus(d)==='r'?'#ff3b30':getStatus(d)==='a'?'#ff9500':'#34c759';
+    const col=status(d)==='r'?'#ff3b30':status(d)==='a'?'#ff9500':'#34c759';
     const w=Math.round(parseFloat(avg)/5*100);
-    return`<div class="dr"><span class="dl">${label}</span>
-      <span class="dv" style="display:flex;align-items:center;gap:8px">
-        <span style="width:60px;height:4px;background:#f2f2f7;border-radius:2px;display:inline-block;overflow:hidden">
-          <span style="display:block;width:${w}%;height:100%;background:${col};border-radius:2px"></span>
-        </span>${avg}/5
-      </span></div>`;
+    return`<div class="dr"><span class="dl">${label}</span><span class="dv" style="display:flex;align-items:center;gap:8px"><span style="width:60px;height:4px;background:#f2f2f7;border-radius:2px;display:inline-block;overflow:hidden"><span style="display:block;width:${w}%;height:100%;background:${col};border-radius:2px"></span></span>${avg}/5</span></div>`;
   }).join(''):'<div style="color:#8e8e93;font-size:13px;padding:8px 0">Noch keine Verlaufsdaten</div>';
 
-  document.getElementById('detail-content').innerHTML=`
+  $('detail-content').innerHTML=`
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:1.5rem">
-      <div class="${avCls[st]}" style="width:54px;height:54px;font-size:17px;font-weight:700">${initials(name)}</div>
-      <div>
-        <div style="font-size:20px;font-weight:700;letter-spacing:-0.3px;color:#1c1c1e">${name}</div>
-        <span class="${pillCls[st]}" style="margin-top:5px;display:inline-block">${pillTxt[st]}</span>
-      </div>
+      <div class="${avCls[st]}" style="width:54px;height:54px;font-size:17px;font-weight:700">${ini(name)}</div>
+      <div><div style="font-size:20px;font-weight:700;letter-spacing:-0.3px;color:#1c1c1e">${name}</div><span class="${pCls[st]}" style="margin-top:5px;display:inline-block">${pTxt[st]}</span></div>
     </div>
-    ${s?`<div class="d-section" style="margin-top:0">Heute · ${s.uhrzeit}</div>
+    ${s?`<div class="d-sec" style="margin-top:0">Heute · ${s.uhrzeit}</div>
     <div class="d-card">
       <div class="dr"><span class="dl">Schlaf</span><span class="dv">${em[s.schlaf-1]} ${s.schlaf}/5</span></div>
       <div class="dr"><span class="dl">Erholung</span><span class="dv">${em[s.erholung-1]} ${s.erholung}/5</span></div>
@@ -708,110 +686,222 @@ function showDetail(name){
       <div class="dr"><span class="dl">Krank</span><span class="dv">${s.krank==='ja'?'Ja'+(s.krank_text?' – '+s.krank_text:''):'Nein'}</span></div>
       <div class="dr"><span class="dl">Einsatzfähig</span><span class="dv">${readyMap[s.ready]||s.ready}</span></div>
     </div>`:'<div class="d-card" style="color:#8e8e93;font-size:14px;text-align:center;padding:1.5rem">Heute noch nicht eingecheckt</div>'}
-    <div class="d-section">Verlauf — 7 Tage</div>
+    <div class="d-sec">Verlauf — 7 Tage</div>
     <div class="d-card">${histHtml}</div>
-    <div class="d-section">Trainer-Notiz</div>
+    <div class="d-sec">Trainer-Notiz</div>
     <div class="d-card">
-      <textarea class="note-area" rows="3" id="note-${name}" placeholder="Persönliche Notiz zu diesem Spieler…">${note}</textarea>
-      <button onclick="saveNote('${name}')" style="margin-top:8px;padding:10px 18px;border-radius:10px;border:none;background:#1c1c1e;color:#fff;font-size:14px;font-weight:600;cursor:pointer">Notiz speichern</button>
+      <textarea class="note-area" rows="3" id="note-field" placeholder="Persönliche Notiz…">${note}</textarea>
+      <button id="btn-save-note" style="margin-top:8px;padding:10px 18px;border-radius:10px;border:none;background:#1c1c1e;color:#fff;font-size:14px;font-weight:600;cursor:pointer">Notiz speichern</button>
     </div>
-    ${s?`<button onclick="resetCheckin('${name}')" class="red-btn">Check-in zurücksetzen</button>`:''}`;
+    ${s?'<button class="red-btn" id="btn-reset-one">Check-in zurücksetzen</button>':''}`;
 
+  $('btn-save-note').addEventListener('click',()=>{
+    localStorage.setItem('dhb_note_'+name,$('note-field').value);
+    const b=$('btn-save-note');b.textContent='Gespeichert ✓';b.style.background='#34c759';
+    setTimeout(()=>{b.textContent='Notiz speichern';b.style.background='#1c1c1e';},2000);
+  });
+  if(s){$('btn-reset-one').addEventListener('click',async()=>{
+    if(!confirm('Check-in von "'+name+'" zurücksetzen?'))return;
+    const rows=await api('checkins?datum=eq.'+getToday()+'&spieler=eq.'+encodeURIComponent(name)+'&select=id');
+    if(rows.length){await api('checkins?id=eq.'+rows[0].id,'DELETE');delete todayData[name];renderToday();switchTab('players');}
+  });}
+
+  switchTab('players');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
-  document.getElementById('v-detail').classList.add('on');
+  $('v-detail').classList.add('on');
 }
 
-function saveNote(name){
-  const val=document.getElementById('note-'+name)?.value||'';
-  localStorage.setItem('dhb_note_'+name,val);
-  const btn=event.target;btn.textContent='Gespeichert ✓';btn.style.background='#34c759';
-  setTimeout(()=>{btn.textContent='Notiz speichern';btn.style.background='#1c1c1e';},2000);
-}
-
-
-function getPhysioKey(){return 'dhb_physio_'+getToday();}
-
-function loadPhysioList(){
-  try{return JSON.parse(localStorage.getItem(getPhysioKey())||'[]');}catch(e){return[];}
-}
-function savePhysioList(list){localStorage.setItem(getPhysioKey(),JSON.stringify(list));}
-
-async function initPhysioSignup(){
-  show('s-physio-signup');
-  document.getElementById('physio-date-label').textContent=new Date().toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'});
-  renderPhysioSignup();
-}
-
+// --- PHYSIO ---
 function renderPhysioSignup(){
-  const list=loadPhysioList();
-  const onList=list.map(e=>e.name);
-  const content=document.getElementById('physio-signup-content');
-  content.innerHTML=`
-    <div class="d-card" style="margin-bottom:12px">
-      <div style="font-size:14px;color:#8e8e93;margin-bottom:4px">Aktuell auf der Liste: <strong style="color:#1c1c1e">${list.length}</strong> Spieler</div>
-      ${list.length?list.map((e,i)=>`<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid #f2f2f7">
-        <div class="av av-${e.done?'g':'x'}" style="width:30px;height:30px;font-size:11px">${initials(e.name)}</div>
-        <span style="font-size:14px;color:${e.done?'#8e8e93':'#1c1c1e'};${e.done?'text-decoration:line-through':''};flex:1">${e.name}</span>
-        ${e.done?'<span style="font-size:11px;color:#34c759;font-weight:600">✓ Behandelt</span>':''}
-      </div>`).join(''):'<div style="font-size:13px;color:#8e8e93;padding:4px 0">Noch niemand eingetragen</div>'}
-    </div>
-    <div class="d-section" style="margin-top:0">Ich möchte zum Physio</div>
-    <div class="d-card-tight">
-      ${PLAYERS.map(p=>{
-        const already=onList.includes(p);
-        return`<div class="prow" style="cursor:${already?'default':'pointer'}" ${already?'':'onclick="signupPhysio(''+p+'')"'}>
-          <div class="av ${already?'av-g':'av-x'}">${initials(p)}</div>
-          <div class="pname">${p}</div>
-          ${already?'<span class="pill pill-g">Eingetragen</span>':'<span style="color:#007aff;font-size:13px;font-weight:600">Eintragen</span>'}
-        </div>`;
-      }).join('')}
-    </div>
-  `;
+  const list=loadPhysio();const onList=list.map(e=>e.name);
+  let html='<div class="d-card" style="margin-bottom:12px">';
+  html+=`<div style="font-size:14px;color:#8e8e93;margin-bottom:4px">Auf der Liste: <strong style="color:#1c1c1e">${list.length}</strong> Spieler</div>`;
+  list.forEach(e=>{html+=`<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid #f2f2f7"><div class="av av-${e.done?'g':'x'}" style="width:30px;height:30px;font-size:11px">${ini(e.name)}</div><span style="font-size:14px;flex:1;${e.done?'color:#8e8e93;text-decoration:line-through':'color:#1c1c1e'}">${e.name}</span>${e.done?'<span style="font-size:11px;color:#34c759;font-weight:600">✓</span>':''}</div>`;});
+  if(!list.length)html+='<div style="font-size:13px;color:#8e8e93">Noch niemand eingetragen</div>';
+  html+='</div>';
+  $('physio-status-card').innerHTML=html;
+  $('physio-player-list').innerHTML='';
+  PLAYERS.forEach(p=>{
+    const already=onList.includes(p);
+    const row=document.createElement('div');
+    row.className='prow'+(already?'':' clickable');
+    row.innerHTML=`<div class="av ${already?'av-g':'av-x'}">${ini(p)}</div><div class="pname">${p}</div>${already?'<span class="pill pill-g">Eingetragen</span>':'<span style="color:#007aff;font-size:13px;font-weight:600">Eintragen</span>'}`;
+    if(!already)row.addEventListener('click',()=>{const l=loadPhysio();if(!l.find(e=>e.name===p)){l.push({name:p,done:false,time:new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})});savePhysio(l);renderPhysioSignup();}});
+    $('physio-player-list').appendChild(row);
+  });
 }
 
-function signupPhysio(name){
-  const list=loadPhysioList();
-  if(list.find(e=>e.name===name))return;
-  list.push({name,done:false,time:new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})});
-  savePhysioList(list);
-  renderPhysioSignup();
+function renderPhysioDash(){
+  const list=loadPhysio();
+  $('dash-physio-list').innerHTML='';
+  $('dash-physio-empty').style.display=list.length?'none':'block';
+  list.forEach((e,i)=>{
+    const row=document.createElement('div');
+    row.className='prow';
+    row.innerHTML=`<div class="av ${e.done?'av-g':'av-r'}">${ini(e.name)}</div><div style="flex:1"><div class="pname" style="${e.done?'text-decoration:line-through;color:#8e8e93':''}">${e.name}</div><div class="psub">Eingetragen: ${e.time}</div></div>`;
+    const cb=document.createElement('button');
+    cb.className='check-btn'+(e.done?' done':'');cb.textContent=e.done?'✓':'';
+    cb.addEventListener('click',()=>{const l=loadPhysio();l[i].done=!l[i].done;savePhysio(l);renderPhysioDash();});
+    row.appendChild(cb);
+    $('dash-physio-list').appendChild(row);
+  });
 }
 
-function renderPhysioDashboard(){
-  const list=loadPhysioList();
-  const el=document.getElementById('physio-list');
-  const empty=document.getElementById('physio-empty');
-  if(!list.length){el.innerHTML='';empty.style.display='block';return;}
-  empty.style.display='none';
-  el.innerHTML=list.map((e,i)=>`
-    <div class="prow" style="cursor:default">
-      <div class="av ${e.done?'av-g':'av-r'}">${initials(e.name)}</div>
-      <div style="flex:1">
-        <div class="pname" style="${e.done?'text-decoration:line-through;color:#8e8e93':''}">${e.name}</div>
-        <div class="psub">Eingetragen: ${e.time}</div>
-      </div>
-      <button class="check-btn ${e.done?'done':''}" onclick="togglePhysio(${i})" title="${e.done?'Rückgängig':'Abhaken'}">
-        ${e.done?'✓':''}
-      </button>
-    </div>
-  `).join('');
+// --- SESSION ---
+function updateSessionBtn(){
+  const d=loadSession();
+  $('session-btn-wrap').style.display=d.open?'block':'none';
 }
 
-function togglePhysio(idx){
-  const list=loadPhysioList();
-  list[idx].done=!list[idx].done;
-  savePhysioList(list);
-  renderPhysioDashboard();
+function renderSessionDash(){
+  const d=loadSession();
+  $('session-dot').style.background=d.open?'#34c759':'#c7c7cc';
+  $('session-status-txt').textContent=d.open?'Offen — "'+d.name+'"':'Geschlossen';
+  $('session-results').innerHTML='';
+  $('session-no-results').style.display=d.results&&d.results.length?'none':'block';
+  if(d.results&&d.results.length){
+    const avg=(d.results.reduce((a,b)=>a+b.val,0)/d.results.length).toFixed(1);
+    const top=document.createElement('div');
+    top.className='prow';top.style.background='#f9f9fb';
+    top.innerHTML=`<div style="flex:1"><div class="pname">Teamdurchschnitt</div><div class="psub">${d.results.length} Bewertungen</div></div><div style="font-size:22px;font-weight:700;color:#5856d6">${avg}<span style="font-size:14px;color:#8e8e93">/5</span></div>`;
+    $('session-results').appendChild(top);
+    d.results.forEach(r=>{
+      const row=document.createElement('div');row.className='prow';
+      row.innerHTML=`<div class="av av-x">${ini(r.name)}</div><div style="flex:1"><div class="pname">${r.name}</div><div class="psub">${r.time}</div></div><div style="font-size:18px;font-weight:700;color:#5856d6">${r.val}<span style="font-size:12px;color:#8e8e93">/5</span></div>`;
+      $('session-results').appendChild(row);
+    });
+  }
 }
 
-function clearPhysio(){
-  if(!confirm('Alle Einträge von heute löschen?'))return;
-  localStorage.removeItem(getPhysioKey());
-  renderPhysioDashboard();
+function initSessionFeedback(){
+  show('s-session');
+  const d=loadSession();
+  $('session-unit-label').textContent=d.name||'Training';
+  const done=d.results?d.results.map(r=>r.name):[];
+  $('session-grid').innerHTML='';
+  PLAYERS.forEach(p=>{
+    const already=done.includes(p);
+    const btn=document.createElement('button');
+    btn.className='p-btn'+(already?' done':'');
+    btn.innerHTML=`<span class="dot ${already?'dot-g':'dot-x'}"></span><span style="line-height:1.3">${p}${already?' ✓':''}</span>`;
+    if(!already)btn.addEventListener('click',()=>selectSessionPlayer(p));
+    $('session-grid').appendChild(btn);
+  });
 }
 
-loadSettings();
+let sessionPlayer=null;
+function selectSessionPlayer(name){
+  sessionPlayer=name;
+  $('session-form-name').textContent=name;
+  formState.session=0;
+  buildStars('q-session-stars','session');
+  $('session-submit-btn').disabled=false;$('session-submit-btn').textContent='Bewertung abschicken';
+  show('s-session-form');
+}
+
+function submitSession(){
+  if(!formState.session){alert('Bitte eine Bewertung auswählen.');return;}
+  $('session-submit-btn').disabled=true;$('session-submit-btn').textContent='Gespeichert…';
+  const d=loadSession();if(!d.results)d.results=[];
+  d.results=d.results.filter(r=>r.name!==sessionPlayer);
+  d.results.push({name:sessionPlayer,val:formState.session,time:new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})});
+  saveSession(d);
+  $('session-success-name').textContent=sessionPlayer+' hat bewertet!';
+  show('s-session-success');
+}
+
+// --- CSV EXPORT ---
+function exportCSV(){
+  const rows=[['Name','Schlaf','Erholung','Schmerzen','Schmerzinfo','Krank','Krankinfo','Einsatzfähig','Uhrzeit','Status']];
+  PLAYERS.forEach(p=>{const s=todayData[p];if(s)rows.push([p,s.schlaf,s.erholung,s.schmerz,s.schmerz_text||'',s.krank,s.krank_text||'',s.ready,s.uhrzeit,pTxt[status(s)]]);});
+  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);a.download='DHB-MU16-'+getToday()+'.csv';a.click();
+}
+
+// --- EVENT LISTENERS ---
+document.addEventListener('DOMContentLoaded',()=>{
+  loadSettings();updateSessionBtn();
+
+  // Startseite
+  $('btn-checkin').addEventListener('click',initCheckin);
+  $('btn-login').addEventListener('click',()=>show('s-login'));
+  $('btn-physio').addEventListener('click',()=>{show('s-physio');$('physio-date').textContent=new Date().toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'});renderPhysioSignup();});
+  $('btn-session').addEventListener('click',initSessionFeedback);
+
+  // Login
+  $('btn-login-submit').addEventListener('click',()=>{if($('pw-input').value===PW){$('pw-error').textContent='';$('pw-input').value='';initDashboard();}else{$('pw-error').textContent='Falsches Passwort';}});
+  $('pw-input').addEventListener('keydown',e=>{if(e.key==='Enter')$('btn-login-submit').click();});
+  $('btn-login-back').addEventListener('click',()=>show('s-role'));
+
+  // Checkin
+  $('btn-checkin-back').addEventListener('click',()=>show('s-role'));
+  $('btn-form-back').addEventListener('click',()=>show('s-checkin'));
+  $('yn-schmerz-ja').addEventListener('click',()=>pickYN('schmerz','ja',true));
+  $('yn-schmerz-nein').addEventListener('click',()=>pickYN('schmerz','nein',false));
+  $('yn-krank-ja').addEventListener('click',()=>pickYN('krank','ja',true));
+  $('yn-krank-nein').addEventListener('click',()=>pickYN('krank','nein',false));
+  $('ready-ja').addEventListener('click',()=>pickReady('ja'));
+  $('ready-teil').addEventListener('click',()=>pickReady('teilweise'));
+  $('ready-nein').addEventListener('click',()=>pickReady('nein'));
+  $('submit-btn').addEventListener('click',submitForm);
+  $('btn-next-player').addEventListener('click',initCheckin);
+
+  // Physio back
+  $('btn-physio-back').addEventListener('click',()=>show('s-role'));
+
+  // Session
+  $('btn-session-back').addEventListener('click',()=>show('s-role'));
+  $('btn-session-form-back').addEventListener('click',()=>show('s-session'));
+  $('session-submit-btn').addEventListener('click',submitSession);
+  $('btn-session-next').addEventListener('click',initSessionFeedback);
+
+  // Dashboard
+  $('btn-refresh').addEventListener('click',refreshDashboard);
+  $('btn-abmelden').addEventListener('click',()=>show('s-role'));
+  $('btn-detail-back').addEventListener('click',()=>switchTab('players'));
+  $('btn-csv').addEventListener('click',exportCSV);
+  $('btn-reset-all').addEventListener('click',async()=>{
+    if(!confirm('Alle '+Object.keys(todayData).length+' Check-ins zurücksetzen?'))return;
+    const rows=await api('checkins?datum=eq.'+getToday()+'&select=id');
+    await Promise.all(rows.map(r=>api('checkins?id=eq.'+r.id,'DELETE')));
+    todayData={};renderToday();
+  });
+  $('btn-add-player').addEventListener('click',()=>{
+    const n=$('new-player-input').value.trim();
+    if(!n){alert('Bitte einen Namen eingeben.');return;}
+    if(PLAYERS.includes(n)){alert('Spieler bereits im Kader.');return;}
+    PLAYERS.push(n);PLAYERS.sort();savePlayers();$('new-player-input').value='';renderKader();
+  });
+  $('btn-save-deadline').addEventListener('click',()=>{
+    DEADLINE=$('deadline-input').value;localStorage.setItem('dhb_dl',DEADLINE);
+    $('deadline-msg').textContent=DEADLINE?'Gespeichert — Frist: '+DEADLINE+' Uhr':'Gespeichert — kein Zeitlimit';
+    setTimeout(()=>$('deadline-msg').textContent='',3000);
+  });
+  $('btn-change-pw').addEventListener('click',()=>{
+    const a=$('new-pw').value,b=$('new-pw2').value,msg=$('pw-msg');
+    if(!a){msg.style.color='#ff3b30';msg.textContent='Bitte Passwort eingeben.';return;}
+    if(a!==b){msg.style.color='#ff3b30';msg.textContent='Passwörter stimmen nicht überein.';return;}
+    PW=a;localStorage.setItem('dhb_pw',a);$('new-pw').value='';$('new-pw2').value='';
+    msg.style.color='#34c759';msg.textContent='Passwort geändert!';setTimeout(()=>msg.textContent='',3000);
+  });
+  $('btn-clear-physio').addEventListener('click',()=>{if(!confirm('Alle Einträge löschen?'))return;localStorage.removeItem(physioKey());renderPhysioDash();});
+  $('btn-open-session').addEventListener('click',()=>{
+    const name=$('session-name-input').value.trim()||'Training';
+    const d=loadSession();d.open=true;d.name=name;saveSession(d);renderSessionDash();updateSessionBtn();
+  });
+  $('btn-toggle-session').addEventListener('click',()=>{
+    const d=loadSession();
+    if(d.open){if(!confirm('Bewertung schließen?'))return;d.open=false;saveSession(d);}
+    else{const name=$('session-name-input').value.trim()||'Training';d.open=true;d.name=name;saveSession(d);}
+    renderSessionDash();updateSessionBtn();
+  });
+
+  // Seg tabs
+  document.querySelectorAll('.seg button').forEach(btn=>{
+    btn.addEventListener('click',()=>switchTab(btn.dataset.tab));
+  });
+});
 </script>
 </body>
 </html>
