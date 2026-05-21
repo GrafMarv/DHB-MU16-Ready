@@ -120,7 +120,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <button class="role-btn role-btn-main" id="btn-checkin">Ich bin Spieler</button>
     <button class="role-btn role-btn-sec" id="btn-login">Trainer-Dashboard</button>
     <button class="role-btn role-btn-sec" id="btn-physio" style="border:1.5px solid #007aff;color:#007aff">Physio-Warteliste</button>
-    <div id="session-btn-wrap" style="width:100%;max-width:340px;display:none">
+    <div id="session-btn-wrap" style="width:100%;max-width:340px;">
       <button class="role-btn" id="btn-session" style="background:#5856d6;color:#fff">Einheit bewerten 💪</button>
     </div>
   </div>
@@ -232,19 +232,26 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <div style="font-size:13px;font-weight:700;color:#8e8e93;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px" id="session-unit-label"></div>
     <div class="page-title">Einheit bewerten</div>
     <div class="page-sub">Anonym — kein Name nötig</div>
-    <div class="card">
-      <div class="sec-label">Belastung</div>
-      <div class="q-label">Wie anstrengend war die Einheit?</div>
-      <div class="q-sub">1 = sehr leicht · 5 = extrem hart</div>
-      <div class="stars" id="q-session-stars"></div>
+    <div id="session-closed-msg" style="display:none;text-align:center;padding:3rem 1rem">
+      <div style="font-size:48px;margin-bottom:1rem">⏳</div>
+      <div style="font-size:18px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Keine Einheit offen</div>
+      <div style="font-size:14px;color:#8e8e93">Der Trainer hat noch keine Einheit zur Bewertung freigegeben.</div>
     </div>
-    <div class="card" style="background:#f9f9fb">
-      <div style="display:flex;justify-content:space-between;font-size:13px;color:#8e8e93">
-        <span>😌 Sehr leicht</span><span>😰 Extrem hart</span>
+    <div id="session-form-content">
+      <div class="card">
+        <div class="sec-label">Belastung</div>
+        <div class="q-label">Wie anstrengend war die Einheit?</div>
+        <div class="q-sub">1 = sehr leicht · 5 = extrem hart</div>
+        <div class="stars" id="q-session-stars"></div>
       </div>
+      <div class="card" style="background:#f9f9fb">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#8e8e93">
+          <span>😌 Sehr leicht</span><span>😰 Extrem hart</span>
+        </div>
+      </div>
+      <button class="submit-btn" id="session-submit-btn" style="background:#5856d6">Anonym abschicken</button>
+      <div style="height:2rem"></div>
     </div>
-    <button class="submit-btn" id="session-submit-btn" style="background:#5856d6">Anonym abschicken</button>
-    <div style="height:2rem"></div>
   </div>
 </div>
 
@@ -405,6 +412,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
         </div>
         <input class="add-input" type="text" id="session-name-input" placeholder="Name der Einheit (z.B. Vormittagstraining)" style="margin-bottom:8px">
         <button class="submit-btn" id="btn-open-session" style="background:#5856d6">Bewertung freigeben</button>
+        <button class="submit-btn" id="btn-copy-session-link" style="background:#fff;color:#5856d6;border:1.5px solid #5856d6;margin-top:8px">🔗 Link kopieren & teilen</button>
       </div>
       <div class="d-sec">Ergebnisse heute</div>
       <div class="d-card" id="session-results-summary" style="display:none">
@@ -833,9 +841,18 @@ function renderSessionDash(){
 }
 
 function initSessionFeedback(){
-  show('s-session');
   const d=loadSession();
+  if(!d.open){
+    show('s-session');
+    $('session-unit-label').textContent='';
+    $('session-form-content').style.display='none';
+    $('session-closed-msg').style.display='block';
+    return;
+  }
+  show('s-session');
   $('session-unit-label').textContent=d.name||'Training';
+  $('session-form-content').style.display='block';
+  $('session-closed-msg').style.display='none';
   formState.session=0;
   buildStars('q-session-stars','session');
   $('session-submit-btn').disabled=false;
@@ -861,7 +878,7 @@ function exportCSV(){
 
 // --- EVENT LISTENERS ---
 document.addEventListener('DOMContentLoaded',()=>{
-  loadSettings();updateSessionBtn();
+  loadSettings();
 
   // Startseite
   $('btn-checkin').addEventListener('click',initCheckin);
@@ -950,13 +967,21 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   $('btn-open-session').addEventListener('click',()=>{
     const name=$('session-name-input').value.trim()||'Training';
-    const d=loadSession();d.open=true;d.name=name;saveSession(d);renderSessionDash();updateSessionBtn();
+    const d=loadSession();d.open=true;d.name=name;saveSession(d);renderSessionDash();
+  });
+  $('btn-copy-session-link').addEventListener('click',()=>{
+    const link='https://grafmarv.github.io/DHB-MU16-Ready/?bewerten';
+    navigator.clipboard.writeText(link).then(()=>{
+      const b=$('btn-copy-session-link');
+      b.textContent='✓ Link kopiert — in WhatsApp einfügen!';
+      setTimeout(()=>b.textContent='🔗 Link kopieren & teilen',3000);
+    }).catch(()=>prompt('Link kopieren:',link));
   });
   $('btn-toggle-session').addEventListener('click',()=>{
     const d=loadSession();
     if(d.open){if(!confirm('Bewertung schließen?'))return;d.open=false;saveSession(d);}
     else{const name=$('session-name-input').value.trim()||'Training';d.open=true;d.name=name;saveSession(d);}
-    renderSessionDash();updateSessionBtn();
+    renderSessionDash();
   });
 
   // Seg tabs
