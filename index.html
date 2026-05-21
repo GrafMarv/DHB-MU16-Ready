@@ -389,6 +389,7 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
         <div id="physio-slot-msg" style="font-size:13px;color:#34c759;margin-top:8px;min-height:18px;text-align:center"></div>
       </div>
       <div class="d-sec">Terminliste — heute<button class="d-sec-btn" id="btn-clear-physio">Alle löschen</button></div>
+      <button class="submit-btn" id="btn-physio-msg" style="background:#25d366;margin:0 0 10px">📋 Nachricht kopieren</button>
       <div class="d-card-tight" id="dash-physio-list"></div>
       <div id="dash-physio-empty" style="text-align:center;font-size:13px;color:#8e8e93;margin-top:8px">Noch niemand auf der Liste</div>
     </div>
@@ -426,7 +427,7 @@ const SURL='https://upfeswxpeemjkidaamym.supabase.co';
 const SKEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwZmVzd3hwZWVtamtpZGFhbXltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMDY1NjIsImV4cCI6MjA5NDg4MjU2Mn0.ys3BVPw8WZ0kyDcMsPTFTAHLhULWLCOOztIjl1idY64';
 const DEF_PLAYERS=["Albrecht, Tristan","Armbrecht, Jonah","Brinkhoff, Elia","Bunzel, Mattis","Britz, Emil","Brunner, Cornelius","Dahm, Fynn-Philip","Hauck, Constantin","Fischbach, Moritz","Fürnthaler, Alexander","Jagd, Henrik","Koppenhöfer, Mika","Katterbath, Mattis","Kosantzky, Max","Mehling, Paul","Polonius, Constantin","Pörksen, Lasse","Richter, Mats","Rödding, Vincent","Schaarschmidt, Henri","Schöder, Noel","Schulz, Conrad","Schymik, Joshua","Sroubek, Moritz","Stybek, Tim","Tietz, Hannes","von Bernstoff, Leonhard","von Schwarze, Carl","Zeunem, Louis"];
 
-let PLAYERS=[],PW='grafmarv',DEADLINE='';
+let PLAYERS=[],PW='rangeln',DEADLINE='';
 let currentPlayer=null,formState={},todayData={},historyData=[],lineChart=null,barChart=null;
 
 // --- UTILS ---
@@ -924,6 +925,19 @@ document.addEventListener('DOMContentLoaded',()=>{
     msg.style.color='#34c759';msg.textContent='Passwort geändert!';setTimeout(()=>msg.textContent='',3000);
   });
   $('btn-clear-physio').addEventListener('click',()=>{if(!confirm('Alle Einträge löschen?'))return;localStorage.removeItem(physioKey());renderPhysioDash();});
+  $('btn-physio-msg').addEventListener('click',()=>{
+    const list=loadPhysio();
+    if(!list.length){alert('Noch niemand auf der Liste.');return;}
+    const slots=list.map((e,i)=>e.slot||calcSlotTime(i)+' – '+e.name).join('\n');
+    const msg='Hi Jungs, hier die Physio Slots:\n\n'+slots;
+    navigator.clipboard.writeText(msg).then(()=>{
+      const b=$('btn-physio-msg');
+      b.textContent='✓ Kopiert!';
+      setTimeout(()=>b.textContent='📋 Nachricht kopieren',2500);
+    }).catch(()=>{
+      prompt('Nachricht kopieren:',msg);
+    });
+  });
   $('btn-save-physio-slots').addEventListener('click',()=>{
     const start=$('physio-start-time').value;
     const dur=parseInt($('physio-slot-dur').value)||15;
