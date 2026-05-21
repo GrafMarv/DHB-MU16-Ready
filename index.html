@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -123,9 +123,6 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <button class="role-btn role-btn-main" onclick="initCheckin()">Ich bin Spieler</button>
     <button class="role-btn role-btn-sec" onclick="show('s-login')">Trainer-Dashboard</button>
     <button class="role-btn role-btn-sec" onclick="initPhysioSignup()" style="border:1.5px solid #007aff;color:#007aff">Physio-Warteliste</button>
-    <div id="session-btn-wrap" style="width:100%;max-width:340px;display:none">
-      <button class="role-btn" onclick="initSessionFeedback()" style="background:#5856d6;color:#fff">Einheit bewerten 💪</button>
-    </div>
   </div>
 </div>
 
@@ -226,43 +223,6 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
     <div id="physio-signup-content"></div>
   </div>
 </div>
-
-<!-- EINHEIT BEWERTEN -->
-<div class="screen" id="s-session">
-  <div class="ci-wrap">
-    <button class="back-btn" onclick="show('s-role')">‹ Zurück</button>
-    <div style="font-size:13px;font-weight:700;color:#8e8e93;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px" id="session-unit-label"></div>
-    <div class="page-title">Einheit bewerten</div>
-    <div class="page-sub">Wähle deinen Namen</div>
-    <div class="player-grid" id="session-player-grid"></div>
-  </div>
-</div>
-
-<!-- EINHEIT FORM -->
-<div class="screen" id="s-session-form">
-  <div class="form-wrap">
-    <button class="back-btn" onclick="show('s-session')">‹ Zurück</button>
-    <div class="player-big" id="session-form-name"></div>
-    <div class="card">
-      <div class="sec-label">Belastung</div>
-      <div class="q-label">Wie anstrengend war die Einheit?</div>
-      <div class="q-sub">1 = sehr leicht · 5 = extrem hart</div>
-      <div class="stars" id="q-session-stars"></div>
-    </div>
-    <button class="submit-btn" id="session-submit-btn" onclick="submitSession()" style="background:#5856d6">Bewertung abschicken</button>
-    <div style="height:2rem"></div>
-  </div>
-</div>
-
-<!-- EINHEIT SUCCESS -->
-<div class="screen" id="s-session-success">
-  <div class="success-wrap">
-    <div style="font-size:72px;margin-bottom:1rem">💪</div>
-    <div style="font-size:24px;font-weight:700;color:#1c1c1e;margin-bottom:8px">Danke!</div>
-    <div style="font-size:16px;color:#8e8e93;margin-bottom:2.5rem" id="session-success-name"></div>
-    <button onclick="show('s-session')" class="role-btn role-btn-sec" style="max-width:280px">Nächster Spieler</button>
-  </div>
-</div>
 <!-- DASHBOARD -->
 <div class="screen" id="s-dashboard">
   <div class="dash-wrap">
@@ -287,7 +247,6 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       <button onclick="switchTab('kader')">Kader</button>
       <button onclick="switchTab('einst')">Einst.</button>
       <button onclick="switchTab('physio')">Physio</button>
-      <button onclick="switchTab('session')">Einheit</button>
     </div>
 
     <!-- HEUTE -->
@@ -390,26 +349,6 @@ textarea:focus{outline:none;border-color:#007aff;background:#fff}
       <div class="d-card-tight" id="physio-list"></div>
       <div style="margin-top:10px;font-size:13px;color:#8e8e93;text-align:center" id="physio-empty">Noch niemand auf der Liste</div>
     </div>
-    <!-- EINHEIT -->
-    <div class="view" id="v-session">
-      <div class="d-section">
-        Einheitsbewertung
-        <button class="d-section-btn" onclick="toggleSession()">Öffnen / Schließen</button>
-      </div>
-      <div class="d-card" id="session-status-card">
-        <div style="font-size:14px;color:#8e8e93;margin-bottom:12px">Spieler können die Einheit bewerten sobald du sie freigibst.</div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-          <div id="session-status-dot" style="width:10px;height:10px;border-radius:50%;background:#c7c7cc;flex-shrink:0"></div>
-          <div id="session-status-text" style="font-size:15px;font-weight:500;color:#1c1c1e">Geschlossen</div>
-        </div>
-        <input class="add-input" type="text" id="session-name-input" placeholder="Name der Einheit (z.B. Vormittagstraining)" style="margin-bottom:8px">
-        <button class="submit-btn" onclick="openSession()" style="background:#5856d6">Bewertung freigeben</button>
-      </div>
-      <div class="d-section">Ergebnisse heute</div>
-      <div class="d-card-tight" id="session-results-list"></div>
-      <div id="session-no-results" style="text-align:center;font-size:13px;color:#8e8e93;margin-top:8px">Noch keine Bewertungen</div>
-    </div>
-
 </div>
 </div>
 
@@ -614,13 +553,12 @@ function switchTab(t){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   document.querySelectorAll('.seg button').forEach(b=>b.classList.remove('on'));
   document.getElementById('v-'+t).classList.add('on');
-  const idx={today:0,team:1,players:2,kader:3,einst:4,physio:5,session:6};
+  const idx={today:0,team:1,players:2,kader:3,einst:4};
   if(idx[t]!==undefined)document.querySelectorAll('.seg button')[idx[t]]?.classList.add('on');
   if(t==='team')renderCharts();
   if(t==='players')renderPlayers();
   if(t==='kader')renderKader();
   if(t==='physio')renderPhysioDashboard();
-  if(t==='session'){renderSessionDash();}
 }
 
 function renderCharts(){
@@ -792,99 +730,6 @@ function saveNote(name){
 }
 
 
-
-function getSessionKey(){return 'dhb_session_'+getToday();}
-function getSessionData(){try{return JSON.parse(localStorage.getItem(getSessionKey())||'{"open":false,"name":"","results":[]}');}catch(e){return{open:false,name:'',results:[]};}}
-function saveSessionData(d){localStorage.setItem(getSessionKey(),JSON.stringify(d));}
-
-function toggleSession(){
-  const d=getSessionData();
-  if(d.open){
-    if(!confirm('Bewertung schließen?'))return;
-    d.open=false;saveSessionData(d);
-  } else {
-    openSession();return;
-  }
-  renderSessionDash();
-  updateSessionBtn();
-}
-
-function openSession(){
-  const name=document.getElementById('session-name-input')?.value.trim()||'Training';
-  const d=getSessionData();
-  d.open=true;d.name=name;
-  saveSessionData(d);
-  renderSessionDash();
-  updateSessionBtn();
-}
-
-function updateSessionBtn(){
-  const d=getSessionData();
-  const wrap=document.getElementById('session-btn-wrap');
-  if(wrap) wrap.style.display=d.open?'block':'none';
-}
-
-function renderSessionDash(){
-  const d=getSessionData();
-  const dot=document.getElementById('session-status-dot');
-  const txt=document.getElementById('session-status-text');
-  if(dot) dot.style.background=d.open?'#34c759':'#c7c7cc';
-  if(txt) txt.textContent=d.open?'Offen — "'+d.name+'"':'Geschlossen';
-  const list=document.getElementById('session-results-list');
-  const none=document.getElementById('session-no-results');
-  if(!d.results||!d.results.length){if(list)list.innerHTML='';if(none)none.style.display='block';return;}
-  if(none)none.style.display='none';
-  const avg=(d.results.reduce((a,b)=>a+b.val,0)/d.results.length).toFixed(1);
-  const emojis=['🟢','🟡','🟠','🔴','🔴'];
-  if(list)list.innerHTML=`
-    <div class="prow" style="cursor:default;background:#f9f9fb">
-      <div style="flex:1"><div class="pname">Teamdurchschnitt</div><div class="psub">${d.results.length} Bewertungen</div></div>
-      <div style="font-size:22px;font-weight:700;color:#5856d6">${avg}<span style="font-size:14px;color:#8e8e93">/5</span></div>
-    </div>
-    ${d.results.map(r=>`<div class="prow" style="cursor:default">
-      <div class="av av-x">${initials(r.name)}</div>
-      <div style="flex:1"><div class="pname">${r.name}</div><div class="psub">${r.time}</div></div>
-      <div style="font-size:18px;font-weight:700;color:#5856d6">${r.val}<span style="font-size:12px;color:#8e8e93">/5</span></div>
-    </div>`).join('')}`;
-}
-
-async function initSessionFeedback(){
-  show('s-session');
-  const d=getSessionData();
-  document.getElementById('session-unit-label').textContent=d.name||'Training';
-  const done=d.results?d.results.map(r=>r.name):[];
-  document.getElementById('session-player-grid').innerHTML=PLAYERS.map(p=>{
-    const already=done.includes(p);
-    return`<button class="p-btn${already?' done':''}" ${already?'':'onclick="selectSessionPlayer(''+p+'')"'}>
-      <span class="dot ${already?'dot-g':'dot-x'}"></span>
-      <span style="line-height:1.3">${p}${already?' ✓':''}</span>
-    </button>`;
-  }).join('');
-}
-
-function selectSessionPlayer(name){
-  document.getElementById('session-form-name').textContent=name;
-  buildStars('q-session-stars','session');
-  document.getElementById('session-submit-btn').disabled=false;
-  document.getElementById('session-submit-btn').textContent='Bewertung abschicken';
-  window._sessionPlayer=name;
-  formState.session=0;
-  show('s-session-form');
-}
-
-function submitSession(){
-  if(!formState.session){alert('Bitte eine Bewertung auswählen.');return;}
-  const btn=document.getElementById('session-submit-btn');
-  btn.disabled=true;btn.textContent='Gespeichert…';
-  const d=getSessionData();
-  if(!d.results)d.results=[];
-  d.results=d.results.filter(r=>r.name!==window._sessionPlayer);
-  d.results.push({name:window._sessionPlayer,val:formState.session,time:new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})});
-  saveSessionData(d);
-  document.getElementById('session-success-name').textContent=window._sessionPlayer+' hat bewertet!';
-  show('s-session-success');
-}
-
 function getPhysioKey(){return 'dhb_physio_'+getToday();}
 
 function loadPhysioList(){
@@ -966,7 +811,7 @@ function clearPhysio(){
   renderPhysioDashboard();
 }
 
-loadSettings();updateSessionBtn();
+loadSettings();
 </script>
 </body>
 </html>
